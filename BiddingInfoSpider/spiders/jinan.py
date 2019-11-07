@@ -8,7 +8,7 @@ from BiddingInfoSpider.items import BiddinginfospiderItem
 
 class JiNan(BaseSpider):
     name = 'jinan'
-    allowed_domains = ['http://jnggzy.jinan.gov.cn']
+    allowed_domains = ['jnggzy.jinan.gov.cn']
     start_urls = ['http://jnggzy.jinan.gov.cn/jnggzyztb/front/noticelist.do?type=0&xuanxiang=1&area=']
     website_name = '济南招投标'
     tmpl_url = 'http://jnggzy.jinan.gov.cn/jnggzyztb/front/search.do'

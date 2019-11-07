@@ -8,7 +8,7 @@ from BiddingInfoSpider.items import BiddinginfospiderItem
 
 class WuHan(BaseSpider):
     name = 'wuhan'
-    allowed_domains = ['https://www.whzbtb.com']
+    allowed_domains = ['www.whzbtb.com']
     start_urls = ['https://www.whzbtb.com/V2PRTS/']
     website_name = '武汉公共资源交易'
     tmpl_url = 'https://www.whzbtb.com/V2PRTS/TendererNoticeInfoList.do'

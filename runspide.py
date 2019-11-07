@@ -7,7 +7,8 @@ spider_list = [
     'GuangDongJianShe', 'GuangDongJiaoTong', 'GuangDongDianLi', 'GuangDongTieLu', 'GuangDongShuiLi',
     'GuangDongYuanLin', 'GuangDongMinHang', 'GuangDongJunDui', 'GuangDongFeiBiXu', 'GuangDongQiTa',
     'ShuoZhou', 'ZhongHaiYou', "ZhongShiYou",
-    'JiangSu', 'LongYan_JianShe''suqian', 'shenzhen', 'hainan', 'jinan', 'hebei', 'shandong', 'wuhan', 'anhui'
+    'JiangSu', 'LongYan_JianShe''suqian', 'shenzhen', 'hainan', 'jinan', 'hebei', 'shandong', 'wuhan', 'guangzhou',
+    'putian', 'wuyishan', 'anyang', 'meishan', 'nanping', 'nanwang', 'shaowu','jingcaizh','henan','anhui'
 ]
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))

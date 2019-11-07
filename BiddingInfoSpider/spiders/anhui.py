@@ -8,7 +8,7 @@ from BiddingInfoSpider.items import BiddinginfospiderItem
 
 class AnHui(BaseSpider):
     name = 'anhui'
-    allowed_domains = ['http://ggzy.ah.gov.cn']
+    allowed_domains = ['ggzy.ah.gov.cn']
     start_urls = ['http://ggzy.ah.gov.cn/login.do?method=beginlogin']
     website_name = '安徽公共资源交易'
     tmpl_url = 'http://ggzy.ah.gov.cn/dwr/call/plaincall/bulletinInfoDWR.getPackListForDwr1.dwr'
@@ -24,23 +24,23 @@ class AnHui(BaseSpider):
             form_data = {
                 'callCount': '1',
                 'page': '/bulletininfo.do?method=showList&fileType=1&hySort=&bulletinclass=jy&num=1',
-                'httpSessionId': 'f95162dfd85a4fad4d374f5faf8c',
-                'scriptSessionId': '5ECB85B67F8CC90DD5F6006267537EDD345',
+                # 'httpSessionId': 'f95162dfd85a4fad4d374f5faf8c',
+                # 'scriptSessionId': '5ECB85B67F8CC90DD5F6006267537EDD345',
                 'c0-scriptName': 'bulletinInfoDWR',
                 'c0-methodName': 'getPackListForDwr1',
                 'c0-id': '0',
-                'c0-e1': '1',
-                'c0-e2': '',
-                'c0-e3': 'jy',
-                'c0-e4': '1',
-                'c0-e5': '',
-                'c0-e6': '',
-                'c0-e7': '',
-                'c0-e8': '1',
-                'c0-e9': '10',
-                'c0-e10': 'true',
-                'c0-e11': 'packTable',
-                'c0-param0': '{id:reference:c0-e1,hySort:reference:c0-e2,bulletinclass:reference:c0-e3,fileType:reference:c0-e4,bulletinType:reference:c0-e5,district:reference:c0-e6,srcdistrict:reference:c0-e7,currentPage:reference:c0-e8,pageSize:reference:c0-e9,isPage:reference:c0-e10,tabId:reference:c0-e11}',
+                'c0-e1': 'string:1',
+                'c0-e2': 'string:',
+                'c0-e3': 'string:jy',
+                'c0-e4': 'string:1',
+                'c0-e5': 'string:',
+                'c0-e6': 'string:',
+                'c0-e7': 'string:',
+                'c0-e8': 'number:1',
+                'c0-e9': 'string:10',
+                'c0-e10': 'string:true',
+                'c0-e11': 'string:packTable',
+                'c0-param0': 'Object_Object:{id:reference:c0-e1,hySort:reference:c0-e2,bulletinclass:reference:c0-e3,fileType:reference:c0-e4,bulletinType:reference:c0-e5,district:reference:c0-e6,srcdistrict:reference:c0-e7,currentPage:reference:c0-e8,pageSize:reference:c0-e9,isPage:reference:c0-e10,tabId:reference:c0-e11}',
                 'batchId': '8'
             }
 

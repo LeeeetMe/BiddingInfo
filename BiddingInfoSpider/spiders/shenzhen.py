@@ -7,7 +7,7 @@ from BiddingInfoSpider.items import BiddinginfospiderItem
 
 class ShenZhen(BaseSpider):
     name = 'shenzhen'
-    allowed_domains = ['http://zjj.sz.gov.cn']
+    allowed_domains = ['zjj.sz.gov.cn']
     start_urls = ['http://zjj.sz.gov.cn/jsjy/jyxx/zbgg/']
     website_name = '深圳市建设工程'
     tmpl_url = ['https://www.szjsjy.com.cn:8001/jyw/queryGongGaoList.do?rows=10&page=%s' % i for i in range(1, 50)]

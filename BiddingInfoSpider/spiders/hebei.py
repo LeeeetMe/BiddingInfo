@@ -7,7 +7,7 @@ from BiddingInfoSpider.items import BiddinginfospiderItem
 
 class HeBei(BaseSpider):
     name = 'hebei'
-    allowed_domains = ['http://121.28.195.124:9001']
+    allowed_domains = ['121.28.195.124:9001']
     start_urls = ['http://121.28.195.124:9001/tender/xxgk/list.do?selectype=zbgg#']
     website_name = '河北公共服务'
     tmpl_url = 'http://121.28.195.124:9001/tender/xxgk/zbgg.do'
