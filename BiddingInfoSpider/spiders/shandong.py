@@ -5,7 +5,7 @@ from BiddingInfoSpider.items import BiddinginfospiderItem
 
 class ShanDong(BaseSpider):
     name = 'shandong'
-    allowed_domains = ['http://ggzyjyzx.shandong.gov.cn']
+    allowed_domains = ['ggzyjyzx.shandong.gov.cn']
     start_urls = ['http://ggzyjyzx.shandong.gov.cn/003/moreinfo.html']
     website_name = '山东公共资源交易'
     tmpl_url = ['http://ggzyjyzx.shandong.gov.cn/003/moreinfo.html'] + [

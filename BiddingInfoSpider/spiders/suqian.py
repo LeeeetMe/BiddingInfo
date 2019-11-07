@@ -8,7 +8,7 @@ from BiddingInfoSpider.items import BiddinginfospiderItem
 
 class SuQian(BaseSpider):
     name = 'suqian'
-    allowed_domains = ['http://ggzy.sqzwfw.gov.cn']
+    allowed_domains = ['ggzy.sqzwfw.gov.cn']
     start_urls = ['http://ggzy.sqzwfw.gov.cn/jyxx/tradeInfo.html']
     website_name = '宿迁公共资源交易'
     tmpl_url = 'http://ggzy.sqzwfw.gov.cn/WebBuilder/jyxxAction.action?cmd=getList'

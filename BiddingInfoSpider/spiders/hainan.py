@@ -5,7 +5,7 @@ from BiddingInfoSpider.items import BiddinginfospiderItem
 
 class HaiNan(BaseSpider):
     name = 'hainan'
-    allowed_domains = ['http://zw.hainan.gov.cn']
+    allowed_domains = ['zw.hainan.gov.cn']
     start_urls = ['http://zw.hainan.gov.cn/ggzy/ggzy/jgzbgg/index_1.jhtml']
     website_name = '海南省公共资源'
     tmpl_url = ['http://zw.hainan.gov.cn/ggzy/ggzy/jgzbgg/index_%s.jhtml' % i for i in range(1, 50)]
