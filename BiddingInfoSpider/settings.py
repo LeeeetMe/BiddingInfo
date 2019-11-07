@@ -52,7 +52,7 @@ ROBOTSTXT_OBEY = False
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'BiddingInfoSpider.middlewares.BiddinginfospiderDownloaderMiddleware': 543,
+    'BiddingInfoSpider.middlewares.BiddinginfospiderDownloaderMiddleware': 543,
 }
 
 # Enable or disable extensions
@@ -63,9 +63,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    'BiddingInfoSpider.pipelines.BiddinginfospiderPipeline': 300,
-# }
+ITEM_PIPELINES = {
+    'BiddingInfoSpider.pipelines.BiddinginfospiderPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -92,6 +92,10 @@ DOWNLOADER_MIDDLEWARES = {
 # 自定义配置，如果为真则执行增量爬取，为假则爬取所有列表。增量规则由spider实现
 BIDDING_INFO_UPDATE = False
 
-HTTPERROR_ALLOWED_CODES = [403,405]
+HTTPERROR_ALLOWED_CODES = [403, 405]
 
 SELENIUM_TIMEOUT = 5
+
+FEED_EXPORT_ENCODING = "gb18030"
+FEED_FORMAT = "csv"
+FEED_URI = "exporter_csv"

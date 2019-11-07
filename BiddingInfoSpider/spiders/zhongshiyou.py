@@ -83,11 +83,11 @@ class ZhongShiYou(BaseSpider):
                 att_name = att.get("NAME")
                 attachments_dict.update({att_name: att_url})
         article = res.get("list")[0]
+        content = []
         if article:
             item["code"] = article.get("projectcode")
             content = Selector(text=article.get("bulletincontent"))
             content = ["".join(i.split()) for i in content.xpath('normalize-space(string(.))').extract()]
-            print(item)
         item.update(
             content=content,
             attachments=attachments_dict,

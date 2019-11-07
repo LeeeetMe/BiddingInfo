@@ -13,6 +13,7 @@ class GuangDongJianShe(BaseSpider):
     tmpl_url = 'http://www.gzggzy.cn/cms/wz/view/index/layout2/szlist.jsp?siteId=1&channelId=503&pchannelid=466&curgclb=01,02,14&curxmlb=01,02,03,04,05,14&curIndex=1&pcurIndex=1&cIndex=1'
     endPageNum = 1
     category = "工程建设"
+    industry = "房建市政"
 
     def __init__(self, *a, **kw):
         super(GuangDongJianShe, self).__init__(*a, **kw)
@@ -42,6 +43,7 @@ class GuangDongJianShe(BaseSpider):
                 title=title,
                 ctime=ctime,
                 href=href,
+                city="广东",
             )
             yield scrapy.Request(
                 url=href,
@@ -67,8 +69,8 @@ class GuangDongJianShe(BaseSpider):
             content=content,
             attachments=attachments_dict,
         )
-        print(item)
-        # yield item
+        # print(item)
+        yield item
 
 
 class GuangDongJiaoTong(GuangDongJianShe):
