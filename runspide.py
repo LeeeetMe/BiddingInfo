@@ -9,15 +9,14 @@ spider_list = [
     'ShuoZhou', 'ZhongHaiYou', "ZhongShiYou",
     'JiangSu', 'LongYan_JianShe''suqian', 'shenzhen', 'hainan', 'jinan', 'hebei', 'shandong', 'wuhan', 'guangzhou',
     'putian', 'wuyishan', 'anyang', 'meishan', 'nanping', 'nanwang', 'shaowu', 'jingcaizh', 'henan', 'anhui',
-    'HuNan', 'HuBei', 'QuanZhou',
+    'HuNan', 'HuBei', 'QuanZhou','qinghai','qinghai2','ganshu'
 ]
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 execute([
     "scrapy",
     "crawl",
-    'anhui',
-# spider_list[-1]
+    spider_list[-1]
 ])
 
 # 通过commands目录中的crawlall执行所有爬虫项目
