@@ -8,14 +8,16 @@ spider_list = [
     'GuangDongYuanLin', 'GuangDongMinHang', 'GuangDongJunDui', 'GuangDongFeiBiXu', 'GuangDongQiTa',
     'ShuoZhou', 'ZhongHaiYou', "ZhongShiYou",
     'JiangSu', 'LongYan_JianShe''suqian', 'shenzhen', 'hainan', 'jinan', 'hebei', 'shandong', 'wuhan', 'guangzhou',
-    'putian', 'wuyishan', 'anyang', 'meishan', 'nanping', 'nanwang', 'shaowu','jingcaizh','henan','anhui'
+    'putian', 'wuyishan', 'anyang', 'meishan', 'nanping', 'nanwang', 'shaowu', 'jingcaizh', 'henan', 'anhui',
+    'HuNan', 'HuBei', 'QuanZhou',
 ]
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 execute([
     "scrapy",
     "crawl",
-    spider_list[-1]
+    'anhui',
+# spider_list[-1]
 ])
 
 # 通过commands目录中的crawlall执行所有爬虫项目
@@ -27,3 +29,5 @@ execute([
 # execute([
 #     'scrapy','runspider', '/Users/yunyi/projects/scrapy_projects/policy_wikipedia/policy_wikipedia/spiders/shandong.py'
 # ])
+
+# cmdline.execute("scrapy crawl GuangDongJianShe -t csv -o guangdong.csv".split())
