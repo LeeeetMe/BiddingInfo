@@ -50,14 +50,6 @@ class GanShu(BaseSpider):
             yield item
 
     def parse_item(self, response):
-        # options = webdriver.ChromeOptions()
-        # options.add_argument('-headless')
-        # driver = webdriver.Chrome(options=options)
-        # driver.get(response.request.url)
-        # driver.implicitly_wait(5)
-        # html = driver.page_source
-        # a = driver.find_element_by_xpath('//div[@class="jxTradingPublic"]')
-
         item = response.meta['meta']
         # 主体
         main = response.xpath('//div[@class="jxTenderObjMain"]')
