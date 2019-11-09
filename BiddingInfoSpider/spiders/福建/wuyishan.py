@@ -56,21 +56,22 @@ class WuYiShan(BaseSpider):
 
             data = {"tenderProjCode": a['tenderProjCode'], "noticeType": "1", "noticeId": ""}
 
-            yield scrapy.Request(url='http://www.wysggzy.cn:81/hyweb/transInfo/getProjBuildNoticeById.do',
-                                 dont_filter=True, callback=self.parse_item, method="POST", body=json.dumps(data),
-                                 meta={'meta': item, })
+            # yield scrapy.Request(url='http://www.wysggzy.cn:81/hyweb/transInfo/getProjBuildNoticeById.do',
+            #                      dont_filter=True, callback=self.parse_item, method="POST", body=json.dumps(data),
+            #                      meta={'meta': item, })
+            yield item
 
-    def parse_item(self, response):
-        item = response.meta['meta']
-        rs = json.loads(response.body.decode('utf8'))['data']["noticeList"][0]['content']
-        selector = Selector(text=rs)
-        # 主体
-        main = selector.xpath('//p')
-        # 正文
-        item['content'] = ["".join(i.split()) for i in main.xpath('normalize-space(string(.))').extract()]
-        # 附件
-        attach = main.xpath(
-            './/a[contains(@href,".pdf") or contains(@href,".rar") or contains(@href,".doc") or contains(@href,".xls") or contains(@href,".zip") or contains(@href,".docx")]')
-        attachments = self.get_attachment(attach, response.request.url)
-        item['attachments'] = attachments
-        print(item)
+    # def parse_item(self, response):
+    #     item = response.meta['meta']
+    #     rs = json.loads(response.body.decode('utf8'))['data']["noticeList"][0]['content']
+    #     selector = Selector(text=rs)
+    #     # 主体
+    #     main = selector.xpath('//p')
+    #     # 正文
+    #     item['content'] = ["".join(i.split()) for i in main.xpath('normalize-space(string(.))').extract()]
+    #     # 附件
+    #     attach = main.xpath(
+    #         './/a[contains(@href,".pdf") or contains(@href,".rar") or contains(@href,".doc") or contains(@href,".xls") or contains(@href,".zip") or contains(@href,".docx")]')
+    #     attachments = self.get_attachment(attach, response.request.url)
+    #     item['attachments'] = attachments
+    #     print(item)

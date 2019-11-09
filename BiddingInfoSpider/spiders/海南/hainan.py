@@ -26,7 +26,9 @@ class HaiNan(BaseSpider):
             item['ctime'] = a1.xpath('..//..//td[4]//text()').extract_first()
             item['city'] = a1.xpath('..//..//td[2]//text()').extract_first()
 
-            yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
+            # yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
+            yield item
+
 
     def parse_item(self, response):
         item = response.meta['meta']

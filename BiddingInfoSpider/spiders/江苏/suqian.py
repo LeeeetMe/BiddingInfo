@@ -37,7 +37,8 @@ class SuQian(BaseSpider):
             ctime = l['postdate']
             city = l['city']
             item = BiddinginfospiderItem(title=title, ctime=ctime, href=href, city=city, )
-            yield scrapy.Request(url=href, dont_filter=True, callback=self.parse_item, meta={'meta': item, })
+            # yield scrapy.Request(url=href, dont_filter=True, callback=self.parse_item, meta={'meta': item, })
+            yield item
 
     def parse_item(self, response):
         item = response.meta['meta']

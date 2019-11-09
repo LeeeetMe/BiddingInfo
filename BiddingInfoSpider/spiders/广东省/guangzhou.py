@@ -28,7 +28,8 @@ class GuangZhou(BaseSpider):
             item['title'] = a1.xpath(".//@title").extract_first().strip()
             item['ctime'] = a1.xpath('.//span//text()').extract_first()
             item['city'] = '广州'
-            yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
+            # yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
+            yield item
 
     def parse_item(self, response):
         item = response.meta['meta']

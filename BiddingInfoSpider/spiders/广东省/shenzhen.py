@@ -34,9 +34,10 @@ class ShenZhen(BaseSpider):
             #     'ggGuid': uid
             # }
             # yield scrapy.Request(url=href, dont_filter=True, callback=self.parse_item,method='POST',body=json.dumps(data),meta={"dynamic": True,} )
-            yield scrapy.Request(
-                url='https://www.szjsjy.com.cn:8001/jyw/showGongGao.do?ggGuid=' + uid + '&gcbh=&bdbhs=',
-                dont_filter=True, callback=self.parse_item, meta={'meta': item, })
+            # yield scrapy.Request(
+            #     url='https://www.szjsjy.com.cn:8001/jyw/showGongGao.do?ggGuid=' + uid + '&gcbh=&bdbhs=',
+            #     dont_filter=True, callback=self.parse_item, meta={'meta': item, })
+            yield item
 
     def parse_item(self, response):
         item = response.meta['meta']

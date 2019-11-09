@@ -44,9 +44,10 @@ class GanShu(BaseSpider):
             data = {"bidpackages": "", "tenderprojectid": item['href'].split('/')[-2], "index": "0"}
 
             # yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
-            request = FormRequest('http://ggzyjy.gansu.gov.cn/f/newprovince/tenderproject/flowpage',
-                                  callback=self.parse_item, formdata=data, dont_filter=True, meta={'meta': item, })
-            yield request
+            # request = FormRequest('http://ggzyjy.gansu.gov.cn/f/newprovince/tenderproject/flowpage',
+            #                       callback=self.parse_item, formdata=data, dont_filter=True, meta={'meta': item, })
+            # yield request
+            yield item
 
     def parse_item(self, response):
         # options = webdriver.ChromeOptions()

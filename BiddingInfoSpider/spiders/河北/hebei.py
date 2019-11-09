@@ -42,7 +42,8 @@ class HeBei(BaseSpider):
             item['ctime'] = a1.xpath('..//..//span//text()').extract_first()
             item['city'] = a1.xpath('..//..//..//p//span[2]//text()').extract_first()
 
-            yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
+            # yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
+            yield item
 
     def parse_item(self, response):
         item = response.meta['meta']

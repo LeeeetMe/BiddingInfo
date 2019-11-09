@@ -40,7 +40,8 @@ class WuHan(BaseSpider):
             # item['title'] = a['tenderPrjName'].encode("latin1").decode("gbk")
             item['ctime'] = a['updateDate'][0:10]
             item['city'] = '武汉'
-            yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
+            # yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
+            yield item
 
     def parse_item(self, response):
         item = response.meta['meta']

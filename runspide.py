@@ -8,7 +8,7 @@ spider_list = [
     'GuangDongYuanLin', 'GuangDongMinHang', 'GuangDongJunDui', 'GuangDongFeiBiXu', 'GuangDongQiTa',
     'ShuoZhou', 'ZhongHaiYou', "ZhongShiYou",
     'JiangSu', 'LongYan_JianShe''suqian', 'shenzhen', 'hainan', 'jinan', 'hebei', 'shandong', 'wuhan', 'guangzhou',
-    'putian', 'wuyishan', 'anyang', 'meishan', 'nanping', 'nanwang', 'shaowu', 'jingcaizh', 'henan', 'anhui',
+    'putian', 'wuyishan', 'anyang', 'meishan', 'nanping', 'nanwang', 'shaowu', 'jingcaizh', 'henan',
     'HuNan', 'HuBei', 'QuanZhou', 'qinghai', 'qinghai2', 'ganshu',
     'BJGongCheng_KanCha', 'BJGongCheng_ShiGong',
     'BJGongCheng_JianLi', 'BJGongCheng_ZhuanYe', 'BJGongCheng_CaiLiao',

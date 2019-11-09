@@ -26,7 +26,8 @@ class NanPing(BaseSpider):
             item['ctime'] = a1.xpath('..//..//td[3]//text()').extract_first()[1:-1]
             item['city'] = '南平'
 
-            yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item,})
+            # yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item,})
+            yield item
 
     def parse_item(self, response):
         item = response.meta['meta']

@@ -55,9 +55,10 @@ class ShaoWu(BaseSpider):
             item['city'] = '邵武'
             data = {"tenderProjCode": a['tenderProjCode'], "noticeType": "1", "noticeId": ""}
 
-            yield scrapy.Request(url='http://www.swsggzy.cn:82/hyweb/transInfo/getProjBuildNoticeById.do',
-                                 dont_filter=True, callback=self.parse_item, method="POST", body=json.dumps(data),
-                                 meta={'meta': item, })
+            # yield scrapy.Request(url='http://www.swsggzy.cn:82/hyweb/transInfo/getProjBuildNoticeById.do',
+            #                      dont_filter=True, callback=self.parse_item, method="POST", body=json.dumps(data),
+            #                      meta={'meta': item, })
+            yield item
 
     def parse_item(self, response):
         item = response.meta['meta']
