@@ -37,7 +37,8 @@ class HuNan(BaseSpider):
                 ctime=ctime,
                 href=href,
             )
-            yield scrapy.Request(url=href, dont_filter=True, callback=self.parse_item, meta={'item': item})
+            # yield scrapy.Request(url=href, dont_filter=True, callback=self.parse_item, meta={'item': item})
+            yield item
 
     def parse_item(self, response):
         item = response.meta["item"]

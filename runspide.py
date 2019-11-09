@@ -18,11 +18,11 @@ spider_list = [
 ]
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-execute([
-    "scrapy",
-    "crawl",
-    spider_list[-1]
-])
+# execute([
+#     "scrapy",
+#     "crawl",
+#     spider_list[-1]
+# ])
 
 # 通过commands目录中的crawlall执行所有爬虫项目
 # execute([
@@ -36,3 +36,8 @@ execute([
 
 # cmdline.execute("scrapy crawl GuangDongJianShe -t csv -o guangdong.csv".split())
 # "GG"
+execute([
+    "scrapy",
+    "crawl",
+    "GG",
+])

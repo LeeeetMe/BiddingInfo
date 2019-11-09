@@ -73,10 +73,11 @@ class LongYan(BaseSpider):
                     ctime=ctime,
                     href=href,
                 )
-                yield scrapy.Request(url=href,
-                                     dont_filter=True,
-                                     callback=self.parse_item,
-                                     meta={"item": item, "dynamic": True})
+                yield item
+                # yield scrapy.Request(url=href,
+                #                      dont_filter=True,
+                #                      callback=self.parse_item,
+                #                      meta={"item": item, "dynamic": True})
 
     def parse_item(self, response):
         item = response.meta["item"]

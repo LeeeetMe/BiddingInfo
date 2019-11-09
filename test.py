@@ -64,3 +64,16 @@ if __name__ == '__main__':
     print(None or str(random.randint(1, 100)))
 "http://www.bcactc.com/home/gcxx/kcsjzbgg_show.aspx?gcbh=110000201911041112"
 "http://www.bcactc.com/home/gcxx/kcsjzbgg_show.aspx?gcbh=110000201911070112"
+
+"""
+<select id="provinceId">
+	        				
+					                                                                               
+
+"当天":"01"
+"近三天":"02"
+"近十天":"03"
+"近一月":"04"
+"近三月":"05"
+"自定义日期":"06"
+"""

@@ -48,11 +48,12 @@ class BiLianWang(BaseSpider):
                 href=href,
                 city=city,
             )
-            yield scrapy.Request(
-                url=href,
-                dont_filter=True,
-                callback=self.parse_item,
-                meta={"dynamic": True, "xpath": '//div[@id="notLogin"]', 'item': item})
+            yield item
+            # yield scrapy.Request(
+            #     url=href,
+            #     dont_filter=True,
+            #     callback=self.parse_item,
+            #     meta={"dynamic": True, "xpath": '//div[@id="notLogin"]', 'item': item})
 
     def parse_item(self, response):
         item = response.meta.get("item")

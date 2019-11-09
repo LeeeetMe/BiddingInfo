@@ -48,9 +48,9 @@ class EcpSgcc(BaseSpider):
                 ctime=ctime,
                 href=href,
             )
-            req = scrapy.Request(response.urljoin(href), callback=self.parse_item, dont_filter=True,
-                                 meta={'item': item})
-            yield req
+            # req = scrapy.Request(response.urljoin(href), callback=self.parse_item, dont_filter=True,
+            #                      meta={'item': item})
+            yield item
 
     def parse_item(self, response):
         item = response.meta.get("item")

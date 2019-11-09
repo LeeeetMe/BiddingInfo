@@ -11,7 +11,7 @@ import json
 class BiddinginfospiderPipeline(object):
     def process_item(self, item, spider):
         item['web_site'] = spider.website_name
-        if item['content']:
+        if item.get('content'):
             print('content len is', len(item['content']))
             item['content'] = 'newline'.join(item['content'])
         else:
