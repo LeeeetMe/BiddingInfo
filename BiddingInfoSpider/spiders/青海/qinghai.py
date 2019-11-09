@@ -47,22 +47,23 @@ class QingHai(BaseSpider):
             item['ctime'] = a['showdate'][0:10]
             item['city'] = a['xiaquname']
 
-            yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
-
-    def parse_item(self, response):
-        item = response.meta['meta']
-        # 主体
-        main = response.xpath('//div[@class="ewb-ca-detail"]')
-        # 正文
-        item['content'] = ["".join(i.split()) for i in main.xpath('normalize-space(string(.))').extract()]
-        # 附件
-        attach = response.xpath('//p[@class="ewb-info-end"]')
-        attach = attach.xpath(
-            './/a[contains(text(),".pdf") or contains(text(),".rar") or contains(text(),".doc") or contains(text(),".xls") or contains(text(),".zip") or contains(text(),".docx")]')
-        attachments = self.get_attachment(attach, response.request.url)
-        item['attachments'] = attachments
-        item['category'] = self.categ
-        print(item)
+            # yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
+            yield  item
+    # 
+    # def parse_item(self, response):
+    #     item = response.meta['meta']
+    #     # 主体
+    #     main = response.xpath('//div[@class="ewb-ca-detail"]')
+    #     # 正文
+    #     item['content'] = ["".join(i.split()) for i in main.xpath('normalize-space(string(.))').extract()]
+    #     # 附件
+    #     attach = response.xpath('//p[@class="ewb-info-end"]')
+    #     attach = attach.xpath(
+    #         './/a[contains(text(),".pdf") or contains(text(),".rar") or contains(text(),".doc") or contains(text(),".xls") or contains(text(),".zip") or contains(text(),".docx")]')
+    #     attachments = self.get_attachment(attach, response.request.url)
+    #     item['attachments'] = attachments
+    #     item['category'] = self.categ
+    #     print(item)
 
 
 
