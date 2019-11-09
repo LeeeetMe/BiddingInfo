@@ -65,29 +65,3 @@ class QingHai(BaseSpider):
     #     item['category'] = self.categ
     #     print(item)
 
-
-
-class Qinghai2(QingHai):
-    name = 'qinghai2'
-    start_urls = ['http://www.qhggzyjy.gov.cn/ggzy/jyxx/001002/secondPage.html']
-    website_name = '青海省公共资源交易'
-    tmpl_url = "http://www.qhggzyjy.gov.cn/inteligentsearch/rest/inteligentSearch/getFullTextData"
-    categ = "政府采购"
-
-
-    def start_requests(self):
-        for i in range(0, self.pageIndex,10):
-            form_data = {"token": "", "pn": i, "rn": 10, "sdt": "", "edt": "", "wd": "", "inc_wd": "", "exc_wd": "",
-                         "fields": "title", "cnum": "001;002;003;004;005;006;007;008;009;010",
-                         "sort": "{\"showdate\":\"0\"}", "ssort": "title", "cl": 200, "terminal": "", "condition": [
-                    {"fieldName": "categorynum", "isLike": True, "likeType": 2, "equal": "001002"}], "time": None,
-                         "highlights": "title", "statistics": None, "unionCondition": None, "accuracy": "100",
-                         "noParticiple": "0", "searchRange": None, "isBusiness": 1}
-            # request = FormRequest(self.tmpl_url, callback=self.parse_page, formdata=form_data, dont_filter=True, )
-
-            request = scrapy.Request(self.tmpl_url,
-                                     callback=self.parse_page,
-                                     method="POST",
-                                     body=json.dumps(form_data),
-                                     dont_filter=True)
-            yield request
