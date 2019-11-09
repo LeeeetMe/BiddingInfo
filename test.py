@@ -62,3 +62,5 @@ if __name__ == '__main__':
     import random
 
     print(None or str(random.randint(1, 100)))
+"http://www.bcactc.com/home/gcxx/kcsjzbgg_show.aspx?gcbh=110000201911041112"
+"http://www.bcactc.com/home/gcxx/kcsjzbgg_show.aspx?gcbh=110000201911070112"

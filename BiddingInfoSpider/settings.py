@@ -98,4 +98,4 @@ SELENIUM_TIMEOUT = 5
 
 FEED_EXPORT_ENCODING = "gb18030"
 FEED_FORMAT = "csv"
-FEED_URI = "exporter_csv"
+# FEED_URI = "exporter_csv"

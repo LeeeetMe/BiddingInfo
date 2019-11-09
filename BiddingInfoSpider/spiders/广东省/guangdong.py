@@ -81,7 +81,7 @@ class GuangDongJiaoTong(GuangDongJianShe):
     website_name = '广东公共交易中心'
     tmpl_url = 'http://www.gzggzy.cn/cms/wz/view/index/layout2/szlist.jsp?siteId=1&channelId=510&channelids=15&pchannelid=467&curgclb=03&curxmlb=01,02,03,04,05,14&curIndex=1&pcurIndex=2'
     endPageNum = 2
-    category = "交通"
+    industry = "交通"
 
     def __init__(self, *a, **kw):
         super(GuangDongJiaoTong, self).__init__(*a, **kw)
@@ -97,7 +97,7 @@ class GuangDongDianLi(GuangDongJianShe):
     website_name = '广东公共交易中心'
     tmpl_url = 'http://www.gzggzy.cn/cms/wz/view/index/layout2/szlist.jsp?siteId=1&channelId=515&channelids=15&pchannelid=468&curgclb=05&curxmlb=01,02,03,04,05,14&curIndex=1&pcurIndex=3'
     endPageNum = 2
-    category = "电力"
+    industry = "电力"
 
     def __init__(self, *a, **kw):
         super(GuangDongDianLi, self).__init__(*a, **kw)
@@ -113,7 +113,7 @@ class GuangDongTieLu(GuangDongJianShe):
     website_name = '广东公共交易中心'
     tmpl_url = 'http://www.gzggzy.cn/cms/wz/view/index/layout2/szlist.jsp?siteId=1&channelId=520&channelids=15&pchannelid=469&curgclb=06&curxmlb=01,02,03,04,05,14&curIndex=1&pcurIndex=4'
     endPageNum = 2
-    category = "铁路"
+    industry = "铁路"
 
     def __init__(self, *a, **kw):
         super(GuangDongTieLu, self).__init__(*a, **kw)
@@ -129,7 +129,7 @@ class GuangDongShuiLi(GuangDongJianShe):
     website_name = '广东公共交易中心'
     tmpl_url = 'http://www.gzggzy.cn/cms/wz/view/index/layout2/szlist.jsp?siteId=1&channelId=525&channelids=15&pchannelid=470&curgclb=04&curxmlb=01,02,03,04,05,14&curIndex=1&pcurIndex=5'
     endPageNum = 2
-    category = "水利"
+    industry = "水利"
 
     def __init__(self, *a, **kw):
         super(GuangDongShuiLi, self).__init__(*a, **kw)
@@ -145,7 +145,7 @@ class GuangDongYuanLin(GuangDongJianShe):
     website_name = '广东公共交易中心'
     tmpl_url = 'http://www.gzggzy.cn/cms/wz/view/index/layout2/szlist.jsp?siteId=1&channelId=543&channelids=15&pchannelid=472&curgclb=08&curxmlb=01,02,03,04,05,14&curIndex=1&pcurIndex=6'
     endPageNum = 2
-    category = "园林"
+    industry = "园林"
 
     def __init__(self, *a, **kw):
         super(GuangDongYuanLin, self).__init__(*a, **kw)
@@ -161,7 +161,7 @@ class GuangDongMinHang(GuangDongJianShe):
     website_name = '广东公共交易中心'
     tmpl_url = 'http://www.gzggzy.cn/cms/wz/view/index/layout2/szlist.jsp?siteId=1&channelId=539&channelids=15&pchannelid=471&curgclb=07&curxmlb=01,02,03,04,05,14&curIndex=1&pcurIndex=7'
     endPageNum = 2
-    category = "民航"
+    industry = "民航"
 
     def __init__(self, *a, **kw):
         super(GuangDongMinHang, self).__init__(*a, **kw)
@@ -177,7 +177,7 @@ class GuangDongJunDui(GuangDongJianShe):
     website_name = '广东公共交易中心'
     tmpl_url = 'http://www.gzggzy.cn/cms/wz/view/index/layout2/szlist.jsp?siteId=1&channelId=1033&channelids=9999&pchannelid=475&curgclb=&curxmlb=01,02,03,04,05,14&curIndex=1&pcurIndex=8'
     endPageNum = 2
-    category = "军队"
+    industry = "军队"
 
     def __init__(self, *a, **kw):
         super(GuangDongJunDui, self).__init__(*a, **kw)
@@ -193,7 +193,7 @@ class GuangDongFeiBiXu(GuangDongJianShe):
     website_name = '广东公共交易中心'
     tmpl_url = 'http://www.gzggzy.cn/cms/wz/view/index/layout2/szlist.jsp?siteId=1&channelId=530&channelids=15&pchannelid=473&curgclb=&curxmlb=01,02,03,04,05,14&curIndex=1&pcurIndex=9'
     endPageNum = 2
-    category = "非必须招标工程"
+    industry = "非必须招标工程"
 
     def __init__(self, *a, **kw):
         super(GuangDongFeiBiXu, self).__init__(*a, **kw)
@@ -209,7 +209,7 @@ class GuangDongQiTa(GuangDongJianShe):
     website_name = '广东公共交易中心'
     tmpl_url = 'http://www.gzggzy.cn/cms/wz/view/index/layout2/szlist.jsp?siteId=1&channelId=535&channelids=15&pchannelid=474&curgclb=13&curxmlb=01,02,03,04,05,14&curIndex=1&pcurIndex=10'
     endPageNum = 2
-    category = "其他"
+    industry = "其他"
 
     def __init__(self, *a, **kw):
         super(GuangDongQiTa, self).__init__(*a, **kw)

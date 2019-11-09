@@ -9,7 +9,12 @@ spider_list = [
     'ShuoZhou', 'ZhongHaiYou', "ZhongShiYou",
     'JiangSu', 'LongYan_JianShe''suqian', 'shenzhen', 'hainan', 'jinan', 'hebei', 'shandong', 'wuhan', 'guangzhou',
     'putian', 'wuyishan', 'anyang', 'meishan', 'nanping', 'nanwang', 'shaowu', 'jingcaizh', 'henan', 'anhui',
-    'HuNan', 'HuBei', 'QuanZhou','qinghai','qinghai2','ganshu'
+    'HuNan', 'HuBei', 'QuanZhou', 'qinghai', 'qinghai2', 'ganshu',
+    'BJGongCheng_KanCha', 'BJGongCheng_ShiGong',
+    'BJGongCheng_JianLi', 'BJGongCheng_ZhuanYe', 'BJGongCheng_CaiLiao',
+    'BJGongCheng_TieLu', 'BJGongCheng_YuanLin', 'BJGongCheng_MinHang', 'BJGongCheng_JunDui', 'BJGongCheng_QiTa',
+    'TianJin', "TaiYuan_ShiGong"
+
 ]
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -30,3 +35,4 @@ execute([
 # ])
 
 # cmdline.execute("scrapy crawl GuangDongJianShe -t csv -o guangdong.csv".split())
+# "GG"

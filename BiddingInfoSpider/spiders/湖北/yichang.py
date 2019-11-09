@@ -11,7 +11,8 @@ class YiChangShigong(BaseSpider):
     start_urls = ['http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003001/003001001/003001001001/?pageing=1']
     website_name = '宜昌市公共资源交易中心'
     tmpl_url = "http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003001/003001001/003001001001/?pageing={0}"
-    category = "工程建设-施工"
+    category = "工程建设"
+    industry = "施工"
 
     def __init__(self, *a, **kw):
         super(YiChangShigong, self).__init__(*a, **kw)
@@ -28,6 +29,7 @@ class YiChangShigong(BaseSpider):
             href = response.urljoin(a.xpath('.//@href').extract_first())
             ctime = self.get_ctime(a.xpath('.//span//text()'))
             item.update(
+                industry=self.industry,
                 category=self.category,
                 title=title,
                 ctime=ctime,
@@ -63,7 +65,8 @@ class YiChangJianLi(YiChangShigong):
     start_urls = ['http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003001/003001001/003001001002/?pageing=1']
     website_name = '宜昌市公共资源交易中心'
     tmpl_url = "http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003001/003001001/003001001002/?pageing={0}"
-    category = "工程建设-监理"
+    category = "工程建设"
+    industry = "监理"
 
     def __init__(self, *a, **kw):
         super(YiChangJianLi, self).__init__(*a, **kw)
@@ -76,7 +79,8 @@ class YiChang_KanChaSheJi(YiChangShigong):
     start_urls = ['http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003001/003001001/003001001003/?pageing=1']
     website_name = '宜昌市公共资源交易中心'
     tmpl_url = "http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003001/003001001/003001001003/?pageing={0}"
-    category = "工程建设-勘察设计"
+    category = "工程建设"
+    industry = "勘察设计"
 
     def __init__(self, *a, **kw):
         super(YiChang_KanChaSheJi, self).__init__(*a, **kw)
@@ -89,7 +93,8 @@ class YiChang_QiTa(YiChangShigong):
     start_urls = ['http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003001/003001001/003001001004/?pageing=1']
     website_name = '宜昌市公共资源交易中心'
     tmpl_url = 'http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003001/003001001/003001001004/?pageing={0}'
-    category = "工程建设-其他"
+    category = "工程建设"
+    industry = "其他"
 
     def __init__(self, *a, **kw):
         super(YiChang_QiTa, self).__init__(*a, **kw)
@@ -102,7 +107,8 @@ class YiChang_HuoWu(YiChangShigong):
     start_urls = ['http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003002/003002001/003002001001/?pageing=1']
     website_name = '宜昌市公共资源交易中心'
     tmpl_url = 'http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003002/003002001/003002001001/?pageing={0}'
-    category = "政府采购-货物"
+    category = "政府采购"
+    industry = "货物"
 
     def __init__(self, *a, **kw):
         super(YiChang_HuoWu, self).__init__(*a, **kw)
@@ -115,7 +121,8 @@ class YiChang_FuWu(YiChangShigong):
     start_urls = ['http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003002/003002001/003002001002/?pageing=1']
     website_name = '宜昌市公共资源交易中心'
     tmpl_url = 'http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003002/003002001/003002001002/?pageing={0}'
-    category = "政府采购-服务"
+    category = "政府采购"
+    industry = "服务"
 
     def __init__(self, *a, **kw):
         super(YiChang_FuWu, self).__init__(*a, **kw)
@@ -128,7 +135,8 @@ class YiChang_GongCheng(YiChangShigong):
     start_urls = ['http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003002/003002001/003002001003/?pageing=1']
     website_name = '宜昌市公共资源交易中心'
     tmpl_url = 'http://ggzyjy.zgzhijiang.gov.cn/zjSite/jyxx/003002/003002001/003002001003/?pageing={0}'
-    category = "政府采购-工程"
+    category = "政府采购"
+    industry = "工程"
 
     def __init__(self, *a, **kw):
         super(YiChang_GongCheng, self).__init__(*a, **kw)
