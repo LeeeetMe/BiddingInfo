@@ -44,44 +44,25 @@ class ZhongTieWu(BaseSpider):
                 'time': '0',
             }
 
-            r=requests.post(self.tmpl_url, data=json.dumps(form_data), headers=headers).text
-            r=json.loads(r)['data']['records']
+            # r=requests.post(self.tmpl_url, data=json.dumps(form_data), headers=headers).text
+            # r=json.loads(r)['data']['records']
+            # print(r)
+            # return
 
-            for a1 in r:
-                item = BiddinginfospiderItem()
-                item['href'] =''
-                item['title'] = a1['title']
-                item['ctime'] = a1['awardPublishTime']
-                yield item
+            yield scrapy.Request(url=self.tmpl_url, dont_filter=True, callback=self.parse_page,method='POST',body=json.dumps(form_data),headers=headers,meta={"dynamic": True,})
 
 
 
+    def parse_page(self, response):
+        # a标签
+        rs = response.body.decode('utf8')
+        print(rs)
+        return
 
-            # yield scrapy.Request(url=self.tmpl_url, dont_filter=True,callback=self.parse_page, )
-
-    # def parse(self, response):
-    #     # a标签
-    #     a = response.xpath('//div[@class="prcont TableListLine"]//li//a')
-    #
-    #     for a1 in a:
-    #         item = BiddinginfospiderItem()
-    #         item['href'] = response.urljoin(a1.xpath('.//@href').extract_first())
-    #         item['title'] = a1.xpath(".//@title").extract_first().strip()
-    #         item['ctime'] = a1.xpath('.//span//text()').extract_first()
-    #         item['city'] = '广州'
-    #         # yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
-    #         yield item
-
-    # def parse_page(self, response):
-    #     # a标签
-    #     rs = response.body.decode('utf8')
-    #     print(rs)
-    #     return
-    #
-    #     rs = json.loads(response.body.decode('utf8'))['data']['records']
-    #     for a1 in rs:
-    #         item = BiddinginfospiderItem()
-    #         item['href'] = response.urljoin(a1.xpath('.//@href').get())
-    #         item['title'] = a1.xpath(".//@title").get().strip()
-    #         item['ctime'] = a1.xpath('..//..//span//text()').get()
-    #         yield item
+        rs = json.loads(response.body.decode('utf8'))['data']['records']
+        for a1 in rs:
+            item = BiddinginfospiderItem()
+            item['href'] = response.urljoin(a1.xpath('.//@href').get())
+            item['title'] = a1.xpath(".//@title").get().strip()
+            item['ctime'] = a1.xpath('..//..//span//text()').get()
+            yield item
