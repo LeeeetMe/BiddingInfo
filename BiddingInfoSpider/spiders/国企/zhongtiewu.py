@@ -1,10 +1,7 @@
-import json
-import scrapy
-from scrapy import FormRequest
-from scrapy.selector import Selector
 from BiddingInfoSpider.spiders.base_spider import BaseSpider
 from BiddingInfoSpider.items import BiddinginfospiderItem
 import requests
+import json
 
 
 class ZhongTieWu(BaseSpider):
