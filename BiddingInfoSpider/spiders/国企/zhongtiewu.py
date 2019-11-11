@@ -18,20 +18,22 @@ class ZhongTieWu(BaseSpider):
     def __init__(self, *a, **kw):
         super(ZhongTieWu, self).__init__(*a, **kw)
         if not self.biddingInfo_update:
-            self.pageIndex = 10
+            self.pageIndex = 3
 
-    def start_requests(self):
+    def parse(self, response):
+        print('######',response)
         headers = {'Host': 'bidding.crmsc.com.cn',
-                   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0',
+                   'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
                    'Accept': '*/*',
                    'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
                    'Accept-Encoding': 'gzip, deflate, br',
                    'Content-Type': 'application/json;charset=utf-8',
                    'X-Requested-With': 'XMLHttpRequest',
                    'Content-Length': '102',
+                   # 'Cookie': 'insert_cookie = 98184645',
                    'Origin': 'https://bidding.crmsc.com.cn',
                    'Connection': 'keep-alive',
-                   'Referer': 'https://bidding.crmsc.com.cn/bulletin',
+                   'Referer': 'https://bidding.crmsc.com.cn/bulletin/',
                    }
         for i in range(1, self.pageIndex):
             form_data = {
@@ -44,25 +46,54 @@ class ZhongTieWu(BaseSpider):
                 'time': '0',
             }
 
-            # r=requests.post(self.tmpl_url, data=json.dumps(form_data), headers=headers).text
-            # r=json.loads(r)['data']['records']
-            # print(r)
-            # return
-
-            yield scrapy.Request(url=self.tmpl_url, dont_filter=True, callback=self.parse_page,method='POST',body=json.dumps(form_data),headers=headers,meta={"dynamic": True,})
+            r=requests.post(self.tmpl_url, data=json.dumps(form_data), headers=headers).text
+            r=json.loads(r)
 
 
+            for a1 in r['data']['records']:
+                item = BiddinginfospiderItem()
+                item['href'] = 'https://bidding.crmsc.com.cn/bulletin/look/'+str(a1['id'])
+                item['title'] = a1['title']
+                item['ctime'] = a1['awardPublishTime']
+                yield item
 
-    def parse_page(self, response):
-        # a标签
-        rs = response.body.decode('utf8')
-        print(rs)
-        return
 
-        rs = json.loads(response.body.decode('utf8'))['data']['records']
-        for a1 in rs:
-            item = BiddinginfospiderItem()
-            item['href'] = response.urljoin(a1.xpath('.//@href').get())
-            item['title'] = a1.xpath(".//@title").get().strip()
-            item['ctime'] = a1.xpath('..//..//span//text()').get()
-            yield item
+
+
+    # def start_requests(self):
+    #     headers = {'Host': 'bidding.crmsc.com.cn',
+    #                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
+    #                'Accept': '*/*',
+    #                'Accept-Language': 'zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2',
+    #                'Accept-Encoding': 'gzip, deflate, br',
+    #                'Content-Type': 'application/json;charset=utf-8',
+    #                'X-Requested-With': 'XMLHttpRequest',
+    #                'Content-Length': '102',
+    #                'Cookie': 'insert_cookie = 98184645',
+    #                'Origin': 'https://bidding.crmsc.com.cn',
+    #                'Connection': 'keep-alive',
+    #                'Referer': 'https://bidding.crmsc.com.cn/bulletin/',
+    #                }
+    #     for i in range(1, self.pageIndex):
+    #         form_data = {
+    #             'pageSize': 15,
+    #             'key': '',
+    #             'currentPage': str(i),
+    #             'bidType': '',
+    #             'bulletinType': '',
+    #             'purchaseMode': '',
+    #             'time': '0',
+    #         }
+    #
+    #         r = requests.post(self.tmpl_url, data=json.dumps(form_data), headers=headers).text
+    #         r = json.loads(r)
+    #         yield scrapy.Request(url=self.tmpl_url, dont_filter=True, callback=self.parse_page, meta={'meta': r, })
+    #
+    # def parse_page(self, response):
+    #     r = response.meta['meta']['data']['records']
+    #     for a1 in r:
+    #         item = BiddinginfospiderItem()
+    #         item['href'] = 'https://bidding.crmsc.com.cn/bulletin/look/'+str(a1['id'])
+    #         item['title'] = a1['title']
+    #         item['ctime'] = a1['awardPublishTime']
+    #         yield item
