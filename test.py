@@ -5,6 +5,8 @@ def get_swf(s):
     return result
 
 
+import requests, json
+
 if __name__ == '__main__':
     s = '''var fp = new FlexPaperViewer( 'http://bulletin.jszbtb.com/FlexPaperViewer', 'viewerPlaceHolder', { config : { SwfFile : escape('http://bulletin.jszbtb.com/project//2019-09/noticeFile/Z1101000188J00437001/afd13bf07a824d61bf9f1c412b45f43a.swf'), EncodeURI : true, Scale : 0.6, ZoomTransition : 'easeOut', ZoomTime : 0.5, ZoomInterval : 0.2, FitPageOnLoad : true, FitWidthOnLoad : true, PrintEnabled: false,//是否支持打印 FullScreenAsMaxWindow : false, ProgressiveLoading : true, MinZoomSize : 0.2, MaxZoomSize : 5, SearchMatchAll : false, InitViewMode : 'Portrait', ViewModeToolsVisible : true, ZoomToolsVisible : true, NavToolsVisible : true, CursorToolsVisible : true, SearchToolsVisible : true, localeChain : 'zh_CN' } }); '''
     x = s.index("escape('")
@@ -59,21 +61,32 @@ fujian/ftp/saveData/I3505000129992085001/TENDER_NOTICE_EXT/6F1B759A-BF37-C67E-91
 """
 
 if __name__ == '__main__':
-    import random
+    form_data = {
+        "TIMEBEGIN_SHOW": "",
+        "TIMEEND_SHOW": "",
+        "TIMEBEGIN": "",
+        "TIMEEND": "",
+        "SOURCE_TYPE": "1",
+        "DEAL_TIME": "02",
+        "DEAL_CLASSIFY": "00",
+        "DEAL_STAGE": "0000",
+        "DEAL_PROVINCE": "220000",
+        "DEAL_CITY": "0",
+        "DEAL_PLATFORM": "0",
+        "BID_PLATFORM": "0",
+        "DEAL_TRADE": "0",
+        "isShowAll": "1",
+        "PAGENUMBER": "1",
+        "FINDTXT": "",
+    }
+    headers = {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
 
-    print(None or str(random.randint(1, 100)))
-"http://www.bcactc.com/home/gcxx/kcsjzbgg_show.aspx?gcbh=110000201911041112"
-"http://www.bcactc.com/home/gcxx/kcsjzbgg_show.aspx?gcbh=110000201911070112"
-
-"""
-<select id="provinceId">
-	        				
-					                                                                               
-
-"当天":"01"
-"近三天":"02"
-"近十天":"03"
-"近一月":"04"
-"近三月":"05"
-"自定义日期":"06"
-"""
+    data = json.loads(
+        requests.post(
+            headers=headers,
+            url="http://deal.ggzy.gov.cn/ds/deal/dealList_find.jsp",
+            data=form_data).text)
+    ttlpage = data.get("ttlpage", 1)
+    print("得到的页数为：", ttlpage)

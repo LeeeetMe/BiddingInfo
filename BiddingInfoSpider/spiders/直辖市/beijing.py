@@ -1,8 +1,5 @@
-import json
-import scrapy
 from scrapy import Selector
 from scrapy import FormRequest
-from urllib.parse import urljoin
 from BiddingInfoSpider.spiders.base_spider import BaseSpider
 from BiddingInfoSpider.items import BiddinginfospiderItem
 
