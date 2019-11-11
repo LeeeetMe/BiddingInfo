@@ -135,7 +135,7 @@ class GG(BaseSpider):
 
     def parse_page(self, response):
         print('request_url= ', response.request.url)
-        body = json.loads(str(response.body, "utf-8"))
+        body = json.loads(1)
         li = body.get("data")
         print("Num :", len(li))
 

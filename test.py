@@ -89,4 +89,66 @@ if __name__ == '__main__':
             url="http://deal.ggzy.gov.cn/ds/deal/dealList_find.jsp",
             data=form_data).text)
     ttlpage = data.get("ttlpage", 1)
-    print("得到的页数为：", ttlpage)
+    # print("得到的页数为：", ttlpage)
+
+"""
+中国化工装备招投标交易平台
+中国兵器电子招标投标交易平台
+中国电力设备信息网电子招标交易平台
+中国长江三峡集团公司电子采购平台
+中国石化电子招标投标交易平台
+中国交建物资采购管理信息系统
+中国交建装备采购管理信息系统
+国家电网公司电子商务平台
+中国兵器装备集团有限公司招标投标交易平台
+国电集团电子招投标平台
+中国石化电子招标投标交易平台
+国家开发投资公司电子采购平台
+南水北调中线建管局招标采购交易平台
+航空工业电子采购平台电子招投标专区
+中国移动电子采购与招标投标系统
+神华招标网
+中国石油电子招投标交易平台
+中国铁物电子招投标平台
+中航招标平台
+中煤电子招投标平台
+大唐电子商务平台
+中国大唐集团公司电子商务平台
+中铁建电子采购平台
+中国航天科技电子采购平台
+招商局集团电子招标采购交易平台
+中国华电集团公司电子商务平台
+航发网上商城电子招投标专区
+中国华能集团电子招投标系统
+冀中能源集团招标投标电子交易平台
+内蒙古电力集团电子商务系统
+鞍钢集团电子招标投标交易平台
+中国一汽电子招标采购交易平台
+吉林国投招标投标交易平台
+上海宝华电子招投标交易平台
+中交舟山公司招标采购平台
+浪潮集团采购电子商务平台
+东风招投标交易中心电子交易平台
+武钢电子招标投标平台
+中国南方电网电子商务系统
+
+	        			</select>
+"""
+
+"http://epp.ctg.com.cn/infoview/?fileId=18bcb843b41140a595d5553db91eb2f1&openFor=ZBGG&typeFor=undefined"
+"18bcb843b41140a595d5553db91eb2f1"
+
+if __name__ == '__main__':
+    xx = "http://ec.ccccltd.cn/PMS/gysCggg.shtml?id=rlfE3i5BGBB0+4B90Mn5NFqXO9o+RLfH6jsITwDEk951zLidmyWYgOWEs0LitWGffQOR1c8LTcIdDnNNdYmzxoE1tptSk0DTfQOR1c8LTcIdDnNNdYmzxsiljOcgldaaGlc9rVi95hCedxzq7qFZuZ9zkhWTvizjGPvNdUTZd5ZWRFxeAJJDCVtXDy8n/F1o"
+    x = '''"javaScript:goByDetail('rlfE3i5BGBB0+4B90Mn5NFqXO9o+RLfH6jsITwDEk951zLidmyWYgOWEs0LitWGffQOR1c8LTcId\r\nDnNNdYmzxoE1tptSk0DTfQOR1c8LTcIdDnNNdYmzxsiljOcgldaaGlc9rVi95hCedxzq7qFZuZ9z\r\nkhWTvizjGPvNdUTZd5ZWRFxeAJJDCVtXDy8n/F1o');"'''
+    y = x[24:-4]
+    # print(y)
+
+
+"rlfE3i5BGBB0+4B90Mn5NFqXO9o+RLfH6jsITwDEk951zLidmyWYgOWEs0LitWGffQOR1c8LTcIdDnNNdYmzxjUB1hNMt9PyfQOR1c8LTcIdDnNNdYmzxvG/ysgm7VmLx+GoNFRm87WA+IuHqMW44uWBS/i8tTd8GPvNdUTZd5ZWRFxeAJJDCVtXDy8n/F1o"
+"rlfE3i5BGBB0+4B90Mn5NFqXO9o+RLfH6jsITwDEk951zLidmyWYgOWEs0LitWGffQOR1c8LTcIdDnNNdYmzxjUB1hNMt9PyfQOR1c8LTcIdDnNNdYmzxvG/ysgm7VmLx+GoNFRm87WA+IuHqMW44uWBS/i8tTd8GPvNdUTZd5ZWRFxeAJJDCVtXDy8n/F1o"
+"sjN7r9ttBwLI2dpg4DQpQb68XreXjaqkgAGKY+PrnM/uM6hTdytqaAowtvisBTZxgZQI4K+0VHY/rDSoXkZRejld1QARSP2y3zSEjSIQ0DlH3dRNK+L0Yq5Xyb5gMh+OGVwHeA8nQj8yaKl8Yr0+nw=="
+
+
+if __name__ == '__main__':
+    print(len("selectResult('"))
