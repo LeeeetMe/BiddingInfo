@@ -1,10 +1,7 @@
-from datetime import date
-
 from BiddingInfoSpider.spiders.base_spider import BaseSpider
 from BiddingInfoSpider.items import BiddinginfospiderItem
-import scrapy
-from urllib.parse import urljoin
 from scrapy import FormRequest
+from datetime import date
 import json
 
 
@@ -65,7 +62,7 @@ class GG(BaseSpider):
         self.area = "北京"
         if not self.biddingInfo_update:
             self.endPageNum = 2
-            self.currTime = self.time_interval.get("近十天 ")
+            self.currTime = self.time_interval.get("近十天")
 
     def start_requests(self):
         for i in range(1, self.endPageNum):
