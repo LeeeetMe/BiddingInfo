@@ -17,7 +17,6 @@ spider_list = [
     'chongqingArea',
     'sichuanArea', 'guizhouArea', 'yunnanArea', 'xizangArea', 'shanxiArea', 'gansuArea', 'qinghaiArea', 'ningxiaArea',
     'xinjiangArea', 'bingtuanArea'
-
 ]
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))

@@ -7,7 +7,7 @@ import json
 
 
 class GG(BaseSpider):
-    name = 'BG'
+    name = 'GG'
     allowed_domains = ['deal.ggzy.gov.cn']
     start_urls = []
     website_name = '全国公共资源交易平台'
@@ -60,7 +60,6 @@ class GG(BaseSpider):
 
     def __init__(self, *a, **kw):
         super(GG, self).__init__(*a, **kw)
-        self.area = "吉林"
         if not self.biddingInfo_update:
             self.currTime = "近十天"
 
