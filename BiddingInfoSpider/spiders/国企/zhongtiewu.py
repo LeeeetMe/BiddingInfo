@@ -21,7 +21,6 @@ class ZhongTieWu(BaseSpider):
             self.pageIndex = 3
 
     def parse(self, response):
-        print('######',response)
         headers = {'Host': 'bidding.crmsc.com.cn',
                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',
                    'Accept': '*/*',
@@ -48,7 +47,6 @@ class ZhongTieWu(BaseSpider):
 
             r=requests.post(self.tmpl_url, data=json.dumps(form_data), headers=headers).text
             r=json.loads(r)
-
 
             for a1 in r['data']['records']:
                 item = BiddinginfospiderItem()
