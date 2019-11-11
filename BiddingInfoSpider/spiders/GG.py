@@ -1,10 +1,8 @@
-from datetime import date
-
 import requests
-
 from BiddingInfoSpider.spiders.base_spider import BaseSpider
 from BiddingInfoSpider.items import BiddinginfospiderItem
 from scrapy import FormRequest
+from datetime import date
 import json
 
 
@@ -64,6 +62,7 @@ class GG(BaseSpider):
         super(GG, self).__init__(*a, **kw)
         if not self.biddingInfo_update:
             self.currTime = "近十天"
+
 
     def start_requests(self):
         form_data = {

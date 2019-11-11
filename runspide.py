@@ -13,16 +13,16 @@ spider_list = [
     'BJGongCheng_KanCha', 'BJGongCheng_ShiGong',
     'BJGongCheng_JianLi', 'BJGongCheng_ZhuanYe', 'BJGongCheng_CaiLiao',
     'BJGongCheng_TieLu', 'BJGongCheng_YuanLin', 'BJGongCheng_MinHang', 'BJGongCheng_JunDui', 'BJGongCheng_QiTa',
-    'TianJin', "TaiYuan_ShiGong"
+    'TianJin', "TaiYuan_ShiGong", 'bingtuan0', 'xinjiang0', 'ningxia0', 'qinghai0', 'ganshu0', 'shanxi0', 'xizang0','yunnan0'
 
 ]
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-# execute([
-#     "scrapy",
-#     "crawl",
-#     spider_list[-1]
-# ])
+execute([
+    "scrapy",
+    "crawl",
+    spider_list[-1]
+])
 
 # 通过commands目录中的crawlall执行所有爬虫项目
 # execute([
@@ -35,9 +35,4 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 # ])
 
 # cmdline.execute("scrapy crawl GuangDongJianShe -t csv -o guangdong.csv".split())
-# "GG"
-execute([
-    "scrapy",
-    "crawl",
-    "BG",
-])
+
