@@ -1,3 +1,4 @@
+import requests
 from BiddingInfoSpider.spiders.base_spider import BaseSpider
 from BiddingInfoSpider.items import BiddinginfospiderItem
 from scrapy import FormRequest
@@ -7,11 +8,11 @@ import json
 
 class GG(BaseSpider):
     name = 'BG'
-    allowed_domains = ['ss.ebnew.com/']
+    allowed_domains = ['deal.ggzy.gov.cn']
     start_urls = []
     website_name = '全国公共资源交易平台'
     tmpl_url = 'http://deal.ggzy.gov.cn/ds/deal/dealList_find.jsp'
-    endPageNum = 1
+    endPageNum = 2
 
     sheng = {"不限": "0",
              "北京": "110000",
@@ -59,22 +60,52 @@ class GG(BaseSpider):
 
     def __init__(self, *a, **kw):
         super(GG, self).__init__(*a, **kw)
-        self.area = "北京"
+        self.area = "吉林"
         if not self.biddingInfo_update:
-            self.endPageNum = 2
-            self.currTime = self.time_interval.get("近十天")
+            self.currTime = "近十天"
+
 
     def start_requests(self):
+        form_data = {
+            "TIMEBEGIN_SHOW": "2019-10-31",
+            "TIMEEND_SHOW": "2019-11-09",
+            "TIMEBEGIN": "2019-10-31",
+            "TIMEEND": "2019-11-09",
+            # 1省平台 2央企招投标
+            "SOURCE_TYPE": "1",
+            # 01当天，02近三天 03近十天 04一个月 05三个月 06 自定义日期，与上边日期关联
+            "DEAL_TIME": self.time_interval.get(self.currTime, "当天"),
+            "DEAL_CLASSIFY": "00",
+            # 0000不限、0001交易公告、0002成交公式
+            "DEAL_STAGE": "0000",
+            # 省、直辖市
+            "DEAL_PROVINCE": self.sheng.get(self.area),
+            # 下级城市/区
+            "DEAL_CITY": "0",
+            "DEAL_PLATFORM": "0",
+            "BID_PLATFORM": "0",
+            "DEAL_TRADE": "0",
+            "isShowAll": "1",
+            # 第几页
+            "PAGENUMBER": "1",
+            # 搜索关键字
+            "FINDTXT": "",
+        }
+        self.endPageNum, closed_bool = self.get_ttlpage(form_data)
+        if not closed_bool:
+            print("木有数据返回")
+            return
+
         for i in range(1, self.endPageNum):
             form_data = {
                 "TIMEBEGIN_SHOW": "2019-10-31",
-                "TIMEEND_SHOW": "2019-11-09",
+                "TIMEEND_SHOW": self.endTime,
                 "TIMEBEGIN": "2019-10-31",
-                "TIMEEND": "2019-11-09",
+                "TIMEEND": self.endTime,
                 # 1省平台 2央企招投标
                 "SOURCE_TYPE": "1",
                 # 01当天，02近三天 03近十天 04一个月 05三个月 06 自定义日期，与上边日期关联
-                "DEAL_TIME": self.currTime,
+                "DEAL_TIME": self.time_interval.get(self.currTime, "当天"),
                 "DEAL_CLASSIFY": "00",
                 # 0000不限、0001交易公告、0002成交公式
                 "DEAL_STAGE": "0000",
@@ -82,7 +113,6 @@ class GG(BaseSpider):
                 "DEAL_PROVINCE": self.sheng.get(self.area),
                 # 下级城市/区
                 "DEAL_CITY": "0",
-
                 "DEAL_PLATFORM": "0",
                 "BID_PLATFORM": "0",
                 "DEAL_TRADE": "0",
@@ -95,11 +125,21 @@ class GG(BaseSpider):
             request = FormRequest(self.tmpl_url, callback=self.parse_page, formdata=form_data, dont_filter=True)
             yield request
 
+    def get_ttlpage(self, form_data):
+        # payload需要使用json.dumps，form_data不需要
+        data = json.loads(requests.post(self.tmpl_url, data=form_data).text)
+        ttlpage = data.get("ttlpage", 1)
+        ttlrow = True if data.get("ttlrow", 0) > 0 else False
+        print("总页数：", ttlpage, type(ttlpage))
+        print("总个数：", data.get("ttlrow", 0), type(ttlrow))
+        return ttlpage, ttlrow
+
     def parse_page(self, response):
         print('request_url= ', response.request.url)
         body = json.loads(str(response.body, "utf-8"))
         li = body.get("data")
         print("Num :", len(li))
+
         for l in li:
             item = BiddinginfospiderItem()
             sheng = l.get('districtShow')

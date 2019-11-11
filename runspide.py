@@ -35,9 +35,4 @@ execute([
 # ])
 
 # cmdline.execute("scrapy crawl GuangDongJianShe -t csv -o guangdong.csv".split())
-# "GG"
-# execute([
-#     "scrapy",
-#     "crawl",
-#     "GG",
-# ])
+
