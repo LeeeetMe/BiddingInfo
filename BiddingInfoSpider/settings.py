@@ -96,15 +96,13 @@ HTTPERROR_ALLOWED_CODES = [403, 405]
 
 SELENIUM_TIMEOUT = 5
 
-FEED_EXPORT_ENCODING = "gb18030"
-FEED_FORMAT = "csv"
-# FEED_URI = "exporter_csv"
 RANDOMIZE_DOWNLOAD_DELAY = True
 
-FEED_URI = 'export_data/%(name)s.xls'
+FEED_URI = 'export_data/%(website_name)s-%(time)s.xls'
 FEED_FORMAT = 'excel'
 FEED_EXPORT_ENCODING = 'utf8'
-FEED_EXPORT_FIELDS = ['title', 'ctime', 'href']
+FEED_EXPORT_FIELDS = ["web_site", "city", "category", "industry", "code", "title", "ctime", "href"]
 FEED_EXPORTERS = {'excel': 'BiddingInfoSpider.excel.ExcelItemExporter'}
-ITEM_DICT = {'title': '标题', 'ctime': '时间', 'web_site': '网站', 'status': '状态', 'href': '网址'}
+ITEM_DICT = {'title': '标题', 'ctime': '时间', 'web_site': '网站', 'href': '网址', "category": "种类",
+             "code": "编号", "city": "城市", "industry": "行业"}
 FIELDS = [ITEM_DICT[i] for i in FEED_EXPORT_FIELDS]

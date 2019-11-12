@@ -71,5 +71,5 @@ class EcpSgcc(BaseSpider):
             content=content,
             attachments=attachments_dict
         )
-        print(item)
+        # print(item)
         yield item

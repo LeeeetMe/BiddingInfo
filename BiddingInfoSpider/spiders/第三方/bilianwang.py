@@ -78,5 +78,5 @@ class BiLianWang(BaseSpider):
             attachments=attachments_dict,
             industry=industry
         )
-        print(item)
-        # yield item
+        # print(item)
+        yield item

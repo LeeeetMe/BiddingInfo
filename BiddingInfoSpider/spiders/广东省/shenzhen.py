@@ -53,5 +53,6 @@ class ShenZhen(BaseSpider):
         attachments_dict = self.get_attachment(attachments, response.request.url)
 
         item.update(content=content, attachments=attachments_dict, )
-        print(item)
+        # print(item)
+        yield item
 

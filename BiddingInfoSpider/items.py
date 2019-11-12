@@ -12,12 +12,9 @@ class BiddinginfospiderItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     web_site = scrapy.Field()
-    status = scrapy.Field()
     code = scrapy.Field()
     title = scrapy.Field()
     ctime = scrapy.Field()
-    content = scrapy.Field()
-    attachments = scrapy.Field()
     href = scrapy.Field()
     # 种类
     category = scrapy.Field()

@@ -20,15 +20,18 @@ spider_list = [
     'tiejiansb', 'tiejianwz', 'datang', 'zhongmei', 'zhonghang', 'zhongtiewu',
     'HuaGongZhaoBiao', 'BingQiDianZi', 'DianLiSheBei', 'ChangJiangSanXia', 'ZhongShiHua',
     'JiaoJianWuZi', 'KaiFaTouZi', 'NanShuiBeiDiao', 'HangKongGongYe', 'YiDongDianZi',
-    'anhui'
-
+    'anhui' 'ShenHua', 'ShenHuaFuWu', 'ShenHuaGongCheng',
+    'beijingArea', 'tianjinArea', 'hebeiArea', 'shanxiXArea', 'neimengguArea', 'liaoningArea', 'jilinArea',
+    'heilongjiangArea', 'shanghaiArea', 'jiangsuArea', 'zhejiangArea', 'anhuiArea', 'fujianArea', 'jiangxiArea',
+    'shandongArea',
 ]
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 execute([
     "scrapy",
     "crawl",
-    spider_list[-1]
+    # spider_list[-1]
+    'YiDongDianZi',
 ])
 
 # 通过commands目录中的crawlall执行所有爬虫项目

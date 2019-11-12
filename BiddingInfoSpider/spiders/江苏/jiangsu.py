@@ -61,8 +61,8 @@ class JiangSu(BaseSpider):
             content=content,
             attachments=attachments_dict
         )
-        print(item)
-        # yield item
+        # print(item)
+        yield item
 
     def get_swf(self, s):
         s = "".join(s.split())

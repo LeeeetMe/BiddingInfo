@@ -144,11 +144,9 @@ if __name__ == '__main__':
     y = x[24:-4]
     # print(y)
 
-
 "rlfE3i5BGBB0+4B90Mn5NFqXO9o+RLfH6jsITwDEk951zLidmyWYgOWEs0LitWGffQOR1c8LTcIdDnNNdYmzxjUB1hNMt9PyfQOR1c8LTcIdDnNNdYmzxvG/ysgm7VmLx+GoNFRm87WA+IuHqMW44uWBS/i8tTd8GPvNdUTZd5ZWRFxeAJJDCVtXDy8n/F1o"
 "rlfE3i5BGBB0+4B90Mn5NFqXO9o+RLfH6jsITwDEk951zLidmyWYgOWEs0LitWGffQOR1c8LTcIdDnNNdYmzxjUB1hNMt9PyfQOR1c8LTcIdDnNNdYmzxvG/ysgm7VmLx+GoNFRm87WA+IuHqMW44uWBS/i8tTd8GPvNdUTZd5ZWRFxeAJJDCVtXDy8n/F1o"
 "sjN7r9ttBwLI2dpg4DQpQb68XreXjaqkgAGKY+PrnM/uM6hTdytqaAowtvisBTZxgZQI4K+0VHY/rDSoXkZRejld1QARSP2y3zSEjSIQ0DlH3dRNK+L0Yq5Xyb5gMh+OGVwHeA8nQj8yaKl8Yr0+nw=="
-
 
 if __name__ == '__main__':
     print(len("selectResult('"))

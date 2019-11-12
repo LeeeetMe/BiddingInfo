@@ -34,7 +34,6 @@ class EcpSgcc(BaseSpider):
             el = ul[i].xpath(".//td")
             li_a = el[2].xpath('.//a')
 
-            status = el[0].xpath('normalize-space(string(.))').extract_first()
             code = el[1].xpath('normalize-space(string(.))').extract_first()
             title = li_a.xpath('@title').extract_first()
             ctime = el[3].xpath('normalize-space(string(.))').extract_first()
@@ -42,7 +41,6 @@ class EcpSgcc(BaseSpider):
             param_lst = self.get_re("\'(\d+)\'", param)
             href = self.article_tmp.format(param_lst[0], param_lst[1])
             item.update(
-                status=status,
                 code=code,
                 title=title,
                 ctime=ctime,
@@ -69,5 +67,5 @@ class EcpSgcc(BaseSpider):
             content=content,
             attachments=attachments_dict
         )
-        print(item)
-        # yield item
+        # print(item)
+        yield item

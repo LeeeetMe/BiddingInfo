@@ -73,4 +73,5 @@ class ShaoWu(BaseSpider):
             './/a[contains(@href,".pdf") or contains(@href,".rar") or contains(@href,".doc") or contains(@href,".xls") or contains(@href,".zip") or contains(@href,".docx")]')
         attachments = self.get_attachment(attach, response.request.url)
         item['attachments'] = attachments
-        print(item)
+        # print(item)
+        yield item
