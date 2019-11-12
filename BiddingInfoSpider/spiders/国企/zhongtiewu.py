@@ -54,7 +54,7 @@ class ZhongTieWu(BaseSpider):
 
 
 
-
+    #另一种思路 初步结果通过meta传送到page
     # def start_requests(self):
     #     headers = {'Host': 'bidding.crmsc.com.cn',
     #                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36',

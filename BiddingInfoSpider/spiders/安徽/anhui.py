@@ -1,7 +1,6 @@
 from BiddingInfoSpider.spiders.base_spider import BaseSpider
 from BiddingInfoSpider.items import BiddinginfospiderItem
 import requests
-import json
 
 
 class AnHui(BaseSpider):
@@ -10,13 +9,6 @@ class AnHui(BaseSpider):
     start_urls = ['http://ggzy.ah.gov.cn/bulletininfo.do?method=showList&fileType=1&hySort=&bulletinclass=jy&num=1']
     website_name = '安徽公共资源交易'
     tmpl_url = 'http://ggzy.ah.gov.cn/dwr/call/plaincall/bulletinInfoDWR.getPackListForDwr1.dwr'
-    pageIndex = 1
-
-    def __init__(self, *a, **kw):
-        super(AnHui, self).__init__(*a, **kw)
-        if not self.biddingInfo_update:
-            self.pageIndex = 3
-
 
     def parse(self, response):
         headers = {'Host': 'ggzy.ah.gov.cn',
@@ -26,12 +18,11 @@ class AnHui(BaseSpider):
                    'Accept-Encoding': 'gzip, deflate',
                    'Content-Type': 'text/plain',
                    'Content-Length': '807',
-                   # 'Cookie': 'insert_cookie = 98184645',
                    'Origin': 'http://ggzy.ah.gov.cn',
                    'Connection': 'keep-alive',
                    'Referer': 'http://ggzy.ah.gov.cn/bulletininfo.do?method=showList&fileType=1&hySort=&bulletinclass=jy&num=1',
                    }
-        for i in range(1, self.pageIndex):
+        for i in range(1, 5):
             form_data = {
                 'callCount': '1',
                 'page': '/ bulletininfo.do?method=showList&fileType=1&hySort=&bulletinclass=jy&num=1',
@@ -47,7 +38,7 @@ class AnHui(BaseSpider):
                 'c0-e5': 'string:',
                 'c0-e6': 'string:',
                 'c0-e7': 'string:',
-                'c0-e8': 'number:2',
+                'c0-e8': 'number:' + str(i),
                 'c0-e9': 'string:10',
                 'c0-e10': 'string:true',
                 'c0-e11': 'string:packTable',
@@ -56,15 +47,22 @@ class AnHui(BaseSpider):
                 'batchId': '2'
             }
 
-            r = requests.post(self.tmpl_url, data=form_data, headers=headers).text
-            print(r)
-            return
+            s = requests.post(self.tmpl_url, data=form_data, headers=headers)
+            s = s.content.decode("unicode_escape")
 
-            # r = json.loads(r)
-            #
-            # for a1 in r['data']['records']:
-            #     item = BiddinginfospiderItem()
-            #     item['href'] = 'https://bidding.crmsc.com.cn/bulletin/look/' + str(a1['id'])
-            #     item['title'] = a1['title']
-            #     item['ctime'] = a1['awardPublishTime']
-            #     yield item
+            # 结果全部是字符串 进行处理
+            s1 = s.split(';')[11:-2]
+            s2 = [
+                i.replace("[\'BULLETIN_TITLEl\']=", 'T').replace("[\'BULLETIN_ID\']=", 'i').replace(".OPERATORDT=", 't')
+                for i in
+                s1 if "[\'BULLETIN_TITLEl\']=" in i or "[\'BULLETIN_ID\']=" in i or ".OPERATORDT=" in i]
+            # 等距切割 三个一组
+            s3 = [s2[i:i + 3] for i in range(0, len(s2), 3)]
+
+            for ss in s3:
+                item = BiddinginfospiderItem()
+                item['href'] = 'http://ggzy.ah.gov.cn/bulletin.do?method=showHomepage&bulletin_id=' + \
+                               [i[4:-1] for i in ss if 'i' in i][0]
+                item['title'] = [i[4:-1] for i in ss if 'T' in i][0]
+                item['ctime'] = [i[4:-1] for i in ss if 't' in i][0]
+                yield item

@@ -19,7 +19,8 @@ spider_list = [
     'wugang', 'dongfeng', 'langchao', 'yiqi', 'angang', 'nmgdl', 'jzny', 'hangfa', 'huadian', 'zhaoshangju',
     'tiejiansb', 'tiejianwz', 'datang', 'zhongmei', 'zhonghang', 'zhongtiewu',
     'HuaGongZhaoBiao', 'BingQiDianZi', 'DianLiSheBei', 'ChangJiangSanXia', 'ZhongShiHua',
-    'JiaoJianWuZi', 'KaiFaTouZi', 'NanShuiBeiDiao', 'HangKongGongYe', 'YiDongDianZi'
+    'JiaoJianWuZi', 'KaiFaTouZi', 'NanShuiBeiDiao', 'HangKongGongYe', 'YiDongDianZi',
+    'anhui'
 
 ]
 
