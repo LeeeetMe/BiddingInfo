@@ -1,3 +1,5 @@
+import requests
+
 from BiddingInfoSpider.spiders.base_spider import BaseSpider
 from BiddingInfoSpider.items import BiddinginfospiderItem
 import scrapy
@@ -8,7 +10,7 @@ from scrapy import FormRequest
 class YiDongDianZi(BaseSpider):
     name = 'YiDongDianZi'
     allowed_domains = ['bidding.sinopec.com']
-    start_urls = []
+    start_urls = ['https://b2b.10086.cn/b2b/main/preIndex.html']
     website_name = '中国移动电子采购与招标投标系统'
     tmpl_url = 'https://b2b.10086.cn/b2b/main/showBiao!showZhaobiaoResult.html'
     headers = {
@@ -33,7 +35,7 @@ class YiDongDianZi(BaseSpider):
         if not self.biddingInfo_update:
             self.endPageNum = 5
 
-    def start_requests(self):
+    def parse(self, response):
         for i in range(1, self.endPageNum):
             form_data = {
                 "page.currentPage": str(i),
@@ -44,22 +46,19 @@ class YiDongDianZi(BaseSpider):
                 "noticeBean.endDate": "",
 
             }
-            request = FormRequest(self.tmpl_url, headers=self.headers, callback=self.parse_page, formdata=form_data)
-            yield request
+            response = requests.post(self.tmpl_url, headers=self.headers, data=form_data)
+            res = scrapy.Selector(text=response.text)
+            li = res.xpath('//table[@class="jtgs_table"]//tr')
+            article_tmp_url = 'https://b2b.10086.cn/b2b/main/viewNoticeContent.html?noticeBean.id={0}'
+            for l in li[1:]:
+                item = BiddinginfospiderItem()
+                a = l.xpath(".//a")
+                id = l.xpath('@onclick').get()[14:-2]
+                href = article_tmp_url.format(id)
 
-    def parse_page(self, response):
-        res = scrapy.Selector(response)
-        li = res.xpath('//tr[@class="_data_tr_flag"]')
-        article_tmp_url = 'https://b2b.10086.cn/b2b/main/viewNoticeContent.html?noticeBean.id={0}'
-        for l in li:
-            item = BiddinginfospiderItem()
-            a = l.xpath(".//a")
-            id = l.xpath('@onclick').get()[14:-3]
-            href = article_tmp_url.format(id)
-
-            title = a.xpath('.//a//@title').get()
-            item.update(
-                title=title,
-                href=href,
-            )
-            print(item)
+                title = a.xpath('.//text()').get()
+                item.update(
+                    title=title,
+                    href=href,
+                )
+                yield item
