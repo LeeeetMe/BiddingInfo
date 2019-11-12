@@ -18,7 +18,7 @@ class ExcelItemExporter(BaseItemExporter):
         self.wbook.save(self.file)
 
     def export_item(self, item):
-        fields = self._get_serialized_fields(item)
+        fields = self._get_serialized_fields(item, include_empty=True)
         for col, v in enumerate(x for _, x in fields):
             self.wsheet.write(self.row + 1, col, v)
         self.row += 1
