@@ -73,6 +73,7 @@ class GanShu(BaseSpider):
         attachments = self.get_attachment(attach, response.request.url)
         item['attachments'] = attachments
 
-        print(item)
+        # print(item)
+        yield item
 
 

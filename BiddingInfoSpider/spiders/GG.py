@@ -159,8 +159,8 @@ class GG(BaseSpider):
                 industry=l.get("tradeShow"),
             )
             print("ITEM IS")
-            print(item)
-            # yield item
+            # print(item)
+            yield item
 
     def getSHI(self, shiQu):
         shi = ""

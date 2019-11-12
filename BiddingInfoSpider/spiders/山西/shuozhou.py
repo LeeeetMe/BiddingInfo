@@ -75,5 +75,5 @@ class ShuoZhou(BaseSpider):
             content=content,
             attachments=attachments_dict
         )
-        print(item)
-        # yield item
+        # print(item)
+        yield item

@@ -35,5 +35,5 @@ class HuaGongZhaoBiao(BaseSpider):
                 href=href,
                 city=city,
             )
-            print(item)
-            # yield item
+            # print(item)
+            yield item

@@ -38,4 +38,5 @@ class ZhongShiHua(BaseSpider):
                 href=href,
                 ctime=ctime,
             )
-            print(item)
+            # print(item)
+            yield item

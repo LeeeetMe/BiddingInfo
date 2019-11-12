@@ -55,4 +55,5 @@ class WuHan(BaseSpider):
         attachments = self.get_attachment(attach, response.request.url)
         item['attachments'] = attachments
         item['title']=main.xpath('//table[@class="header-table"]//tr[2]//td[2]//text()').extract_first()[2:]
-        print(item)
+        # print(item)
+        yield item

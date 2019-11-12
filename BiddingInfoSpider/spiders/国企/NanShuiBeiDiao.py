@@ -43,5 +43,5 @@ class NanShuiBeiDiao(BaseSpider):
                 ctime=ctime,
                 href=href,
             )
-            print(item)
-            # yield item
+            # print(item)
+            yield item

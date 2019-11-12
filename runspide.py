@@ -20,7 +20,11 @@ spider_list = [
     'tiejiansb', 'tiejianwz', 'datang', 'zhongmei', 'zhonghang', 'zhongtiewu',
     'HuaGongZhaoBiao', 'BingQiDianZi', 'DianLiSheBei', 'ChangJiangSanXia', 'ZhongShiHua',
     'JiaoJianWuZi', 'KaiFaTouZi', 'NanShuiBeiDiao', 'HangKongGongYe', 'YiDongDianZi',
-    'ShenHua', 'ShenHuaFuWu', 'ShenHuaGongCheng'
+    'ShenHua', 'ShenHuaFuWu', 'ShenHuaGongCheng',
+    'beijingArea', 'tianjinArea', 'hebeiArea', 'shanxiXArea', 'neimengguArea', 'liaoningArea', 'jilinArea',
+    'heilongjiangArea', 'shanghaiArea', 'jiangsuArea', 'zhejiangArea', 'anhuiArea', 'fujianArea', 'jiangxiArea',
+    'shandongArea',
+
 ]
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
