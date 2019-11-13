@@ -106,3 +106,5 @@ FEED_EXPORTERS = {'excel': 'BiddingInfoSpider.excel.ExcelItemExporter'}
 ITEM_DICT = {'title': '标题', 'ctime': '时间', 'web_site': '网站', 'href': '网址', "category": "种类",
              "code": "编号", "city": "城市", "industry": "行业"}
 FIELDS = [ITEM_DICT[i] for i in FEED_EXPORT_FIELDS]
+
+COMMANDS_MODULE = 'BiddingInfoSpider.commands'
