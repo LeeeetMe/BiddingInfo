@@ -46,13 +46,14 @@ ROBOTSTXT_OBEY = False
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 # SPIDER_MIDDLEWARES = {
-#    'BiddingInfoSpider.middlewares.BiddinginfospiderSpiderMiddleware': 543,
+#     'BiddingInfoSpider.middlewares.BiddinginfospiderSpiderMiddleware': 543,
 # }
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     'BiddingInfoSpider.middlewares.BiddinginfospiderDownloaderMiddleware': 543,
+    'BiddingInfoSpider.middlewares.HttpbinProxyMiddleware': 530,
 }
 
 # Enable or disable extensions

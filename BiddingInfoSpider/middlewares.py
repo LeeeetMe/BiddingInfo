@@ -4,7 +4,9 @@
 #
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+import json
 import time
+import requests
 from selenium.webdriver.support import expected_conditions as EC
 
 from scrapy import signals
@@ -123,3 +125,12 @@ class BiddinginfospiderDownloaderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+class HttpbinProxyMiddleware(object):
+
+    def process_request(self, request, spider):
+        response = requests.get("http://localhost:8000/get")
+        res = json.loads(response.text)
+        if res.get("code") == 200:
+            request.meta['proxy'] = res.get("proxy")

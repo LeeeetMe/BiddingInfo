@@ -149,4 +149,7 @@ if __name__ == '__main__':
 "sjN7r9ttBwLI2dpg4DQpQb68XreXjaqkgAGKY+PrnM/uM6hTdytqaAowtvisBTZxgZQI4K+0VHY/rDSoXkZRejld1QARSP2y3zSEjSIQ0DlH3dRNK+L0Yq5Xyb5gMh+OGVwHeA8nQj8yaKl8Yr0+nw=="
 
 if __name__ == '__main__':
-    print(len("selectResult('"))
+    response = requests.get("http://localhost:8000/get")
+    print(response.status_code)
+    x = json.loads(response.text)
+    print()
