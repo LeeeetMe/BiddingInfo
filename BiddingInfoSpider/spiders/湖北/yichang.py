@@ -16,6 +16,7 @@ class YiChangShigong(BaseSpider):
 
     def __init__(self, *a, **kw):
         super(YiChangShigong, self).__init__(*a, **kw)
+        self.website_name = self.website_name + "-" + self.industry
         if not self.biddingInfo_update:
             self.start_urls = ([self.tmpl_url.format(i) for i in range(1, 24)])
 

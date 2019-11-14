@@ -8,7 +8,7 @@ class MeiShan(BaseSpider):
     allowed_domains = ['www.msggzy.org.cn']
     start_urls = ['http://www.msggzy.org.cn/front/jsgc/001002/?Paging=1']
     website_name = '眉山公共资源交易'
-    tmpl_url =  ['http://www.msggzy.org.cn/front/jsgc/001002/?Paging=%s' % i for i in range(1, 5)]
+    tmpl_url = ['http://www.msggzy.org.cn/front/jsgc/001002/?Paging=%s' % i for i in range(1, 5)]
 
     def __init__(self, *a, **kw):
         super(MeiShan, self).__init__(*a, **kw)

@@ -6,7 +6,12 @@ from BiddingInfoSpider.items import BiddinginfospiderItem
 class GuangZhou(BaseSpider):
     name = 'guangzhou'
     allowed_domains = ['www.gzebpubservice.cn']
-    start_urls = ['http://www.gzebpubservice.cn/fjzbgg/index.htm']
+    start_urls = [
+        'http://www.gzebpubservice.cn/fjzbgg/index.htm',
+        'http://www.gzebpubservice.cn/jtzbgg/index.htm',
+        'http://www.gzebpubservice.cn/dlzbgg/index.htm',
+        'http://www.gzebpubservice.cn/tlzbgg/index.htm',
+    ]
     website_name = '广州公共资源交易'
     tmpl_url = ['http://www.gzebpubservice.cn/fjzbgg/index_%s.htm' % i for i in range(2, 30)] + [
         'http://www.gzebpubservice.cn/jtzbgg/index_%s.htm' % i for i in range(1, 30)] + [

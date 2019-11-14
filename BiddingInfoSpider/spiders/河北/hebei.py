@@ -11,7 +11,7 @@ class HeBei(BaseSpider):
     start_urls = ['http://121.28.195.124:9001/tender/xxgk/list.do?selectype=zbgg#']
     website_name = '河北公共服务'
     tmpl_url = 'http://121.28.195.124:9001/tender/xxgk/zbgg.do'
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(HeBei, self).__init__(*a, **kw)
@@ -19,7 +19,7 @@ class HeBei(BaseSpider):
             self.pageIndex = 2
 
     def start_requests(self):
-        for i in range(self.pageIndex):
+        for i in range(1, self.pageIndex):
             form_data = {
                 'KeyType': 'ggname',
                 'page': str(i),

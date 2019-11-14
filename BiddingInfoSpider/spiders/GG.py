@@ -1,7 +1,8 @@
+import time
 import requests
 from BiddingInfoSpider.spiders.base_spider import BaseSpider
 from BiddingInfoSpider.items import BiddinginfospiderItem
-from scrapy import FormRequest
+from scrapy import FormRequest, Request
 from datetime import date
 import json
 
@@ -13,7 +14,8 @@ class GG(BaseSpider):
     website_name = '全国公共资源交易平台'
     tmpl_url = 'http://deal.ggzy.gov.cn/ds/deal/dealList_find.jsp'
     endPageNum = 2
-
+    currTime = ""
+    area = ""
     sheng = {"不限": "0",
              "北京": "110000",
              "天津": "120000",
@@ -60,9 +62,9 @@ class GG(BaseSpider):
 
     def __init__(self, *a, **kw):
         super(GG, self).__init__(*a, **kw)
+        self.website_name = self.area
         if not self.biddingInfo_update:
             self.currTime = "近十天"
-
 
     def start_requests(self):
         form_data = {
@@ -93,9 +95,11 @@ class GG(BaseSpider):
         self.endPageNum, closed_bool = self.get_ttlpage(form_data)
         if not closed_bool:
             print("木有数据返回")
-            return
+            yield Request(url="http://www.wtf.com", meta={'close': True})
 
         for i in range(1, self.endPageNum):
+            print("xxx")
+
             form_data = {
                 "TIMEBEGIN_SHOW": "2019-10-31",
                 "TIMEEND_SHOW": self.endTime,
@@ -123,6 +127,7 @@ class GG(BaseSpider):
             }
             request = FormRequest(self.tmpl_url, callback=self.parse_page, formdata=form_data, dont_filter=True)
             yield request
+            time.sleep(1)
 
     def get_ttlpage(self, form_data):
         # payload需要使用json.dumps，form_data不需要
@@ -134,8 +139,11 @@ class GG(BaseSpider):
         return ttlpage, ttlrow
 
     def parse_page(self, response):
+        if not response:
+            return BiddinginfospiderItem()
+
         print('request_url= ', response.request.url)
-        body = json.loads(1)
+        body = json.loads(str(response.body, "utf-8"))
         li = body.get("data")
         print("Num :", len(li))
 

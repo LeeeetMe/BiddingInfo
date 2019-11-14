@@ -12,7 +12,7 @@ class JiNan(BaseSpider):
     start_urls = ['http://jnggzy.jinan.gov.cn/jnggzyztb/front/noticelist.do?type=0&xuanxiang=1&area=']
     website_name = '济南招投标'
     tmpl_url = 'http://jnggzy.jinan.gov.cn/jnggzyztb/front/search.do'
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(JiNan, self).__init__(*a, **kw)

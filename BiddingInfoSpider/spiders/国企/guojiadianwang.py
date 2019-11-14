@@ -6,7 +6,8 @@ import scrapy
 class EcpSgcc(BaseSpider):
     name = 'ecp_sgcc'
     allowed_domains = ['ecp.sgcc.com.cn']
-    start_urls = ['http://ecp.sgcc.com.cn/html/topic/all/topic00/list_1.html']
+    start_urls = [
+        'http://ecp.sgcc.com.cn/topic_project_list.jsp?columnName=topic10&site=global&company_id=00&status=00&project_name=all&pageNo=1']
     website_name = '国家电网有限公司'
     tmpl_url = 'http://ecp.sgcc.com.cn/topic_project_list.jsp?columnName=topic10&site=global&company_id=00&status={0}&project_name=all&pageNo={1}'
     article_tmp = "http://ecp.sgcc.com.cn/html/project/{0}/{1}.html"

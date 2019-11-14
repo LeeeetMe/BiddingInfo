@@ -12,7 +12,7 @@ class ShaoWu(BaseSpider):
     start_urls = ['http://www.swsggzy.cn:82/hyweb/swebid/swIndex.do#']
     website_name = '邵武公共资源交易'
     tmpl_url = 'http://www.swsggzy.cn:82/hyweb/transInfo/getTenderInfoPage.do'
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(ShaoWu, self).__init__(*a, **kw)

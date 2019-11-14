@@ -10,12 +10,13 @@ class BJGongCheng_KanCha(BaseSpider):
     start_urls = ['http://www.bcactc.com/home/gcxx/now_kcsjzbgg.aspx']
     website_name = '北京市工程建设交易信息网'
     tmpl_url = 'http://www.bcactc.com/home/gcxx/now_kcsjzbgg.aspx'
-    pageIndex = 1
+    pageIndex = 2
     category = "建设工程"
     industry = "勘察设计"
 
     def __init__(self, *a, **kw):
         super(BJGongCheng_KanCha, self).__init__(*a, **kw)
+        self.website_name = self.website_name + "-" + self.industry
         if not self.biddingInfo_update:
             self.pageIndex = 2
 
@@ -70,7 +71,7 @@ class BJGongCheng_ShiGong(BJGongCheng_KanCha):
     start_urls = ['http://www.bcactc.com/home/gcxx/now_kcsjzbgg.aspx']
     website_name = '北京市工程建设交易信息网'
     tmpl_url = 'http://www.bcactc.com/home/gcxx/now_sgzbgg.aspx'
-    pageIndex = 1
+    pageIndex = 2
     category = "建设工程"
     industry = "施工"
 
@@ -86,7 +87,7 @@ class BJGongCheng_JianLi(BJGongCheng_KanCha):
     start_urls = ['http://www.bcactc.com/home/gcxx/now_kcsjzbgg.aspx']
     website_name = '北京市工程建设交易信息网'
     tmpl_url = 'http://www.bcactc.com/home/gcxx/now_jlzbgg.aspx'
-    pageIndex = 1
+    pageIndex = 2
     category = "建设工程"
     industry = "监理"
 
@@ -102,7 +103,7 @@ class BJGongCheng_ZhuanYe(BJGongCheng_KanCha):
     start_urls = ['http://www.bcactc.com/home/gcxx/now_kcsjzbgg.aspx']
     website_name = '北京市工程建设交易信息网'
     tmpl_url = 'http://www.bcactc.com/home/gcxx/now_zyzbgg.aspx'
-    pageIndex = 1
+    pageIndex = 2
     category = "建设工程"
     industry = "专业"
 
@@ -118,7 +119,7 @@ class BJGongCheng_CaiLiao(BJGongCheng_KanCha):
     start_urls = ['http://www.bcactc.com/home/gcxx/now_kcsjzbgg.aspx']
     website_name = '北京市工程建设交易信息网'
     tmpl_url = 'http://www.bcactc.com/home/gcxx/now_clsbzbgg.aspx'
-    pageIndex = 1
+    pageIndex = 2
     category = "建设工程"
     industry = "材料设备"
 
@@ -134,7 +135,7 @@ class BJGongCheng_TieLu(BJGongCheng_KanCha):
     start_urls = ['http://www.bcactc.com/home/gcxx/now_kcsjzbgg.aspx']
     website_name = '北京市工程建设交易信息网'
     tmpl_url = 'http://www.bcactc.com/home/gcxx/now_tdzbgg.aspx'
-    pageIndex = 1
+    pageIndex = 2
     category = "建设工程"
     industry = "铁路"
 
@@ -150,7 +151,7 @@ class BJGongCheng_YuanLin(BJGongCheng_KanCha):
     start_urls = ['http://www.bcactc.com/home/gcxx/now_kcsjzbgg.aspx']
     website_name = '北京市工程建设交易信息网'
     tmpl_url = 'http://www.bcactc.com/home/gcxx/now_ylzbgg.aspx'
-    pageIndex = 1
+    pageIndex = 2
     category = "建设工程"
     industry = "园林"
 

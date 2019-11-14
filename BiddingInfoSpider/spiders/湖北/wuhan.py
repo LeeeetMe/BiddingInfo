@@ -12,7 +12,7 @@ class WuHan(BaseSpider):
     start_urls = ['https://www.whzbtb.com/V2PRTS/']
     website_name = '武汉公共资源交易'
     tmpl_url = 'https://www.whzbtb.com/V2PRTS/TendererNoticeInfoList.do'
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(WuHan, self).__init__(*a, **kw)

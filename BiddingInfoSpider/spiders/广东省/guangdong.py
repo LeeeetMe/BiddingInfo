@@ -11,12 +11,13 @@ class GuangDongJianShe(BaseSpider):
         'http://www.gzggzy.cn/cms/wz/view/index/layout2/szlist.jsp?siteId=1&channelId=503&pchannelid=466&curgclb=01,02,14&curxmlb=01,02,03,04,05,14&curIndex=1&pcurIndex=1&cIndex=1']
     website_name = '广东公共交易中心'
     tmpl_url = 'http://www.gzggzy.cn/cms/wz/view/index/layout2/szlist.jsp?siteId=1&channelId=503&pchannelid=466&curgclb=01,02,14&curxmlb=01,02,03,04,05,14&curIndex=1&pcurIndex=1&cIndex=1'
-    endPageNum = 1
+    endPageNum = 2
     category = "工程建设"
     industry = "房建市政"
 
     def __init__(self, *a, **kw):
         super(GuangDongJianShe, self).__init__(*a, **kw)
+        self.website_name = self.website_name + "-" + self.industry
         if not self.biddingInfo_update:
             self.endPageNum = 16
 
@@ -40,6 +41,8 @@ class GuangDongJianShe(BaseSpider):
             href = response.urljoin(a.xpath('.//@href').extract_first())
             ctime = self.get_ctime(a.xpath('../../td//text()'))
             item.update(
+                category=self.category,
+                industry=self.industry,
                 title=title,
                 ctime=ctime,
                 href=href,

@@ -11,7 +11,7 @@ class BiLianWang(BaseSpider):
     start_urls = ['http://ss.ebnew.com/tradingSearch/index.htm']
     website_name = '必联网'
     tmpl_url = 'http://ss.ebnew.com/tradingSearch/index.htm'
-    endPageNum = 1
+    endPageNum = 2
 
     def __init__(self, *a, **kw):
         super(BiLianWang, self).__init__(*a, **kw)

@@ -1,5 +1,7 @@
+import os
+import sys
+
 from scrapy.cmdline import execute
-import sys, os
 
 spider_list = [
     'lhjs', 'ecp_sgcc', 'YiChang_Shigong', 'YiChang_JianLi', 'YiChang_KanChaSheJi',
@@ -21,17 +23,16 @@ spider_list = [
     'HuaGongZhaoBiao', 'BingQiDianZi', 'DianLiSheBei', 'ChangJiangSanXia', 'ZhongShiHua',
     'JiaoJianWuZi', 'KaiFaTouZi', 'NanShuiBeiDiao', 'HangKongGongYe', 'YiDongDianZi',
     'anhui' 'ShenHua', 'ShenHuaFuWu', 'ShenHuaGongCheng',
-    'beijingArea', 'tianjinArea', 'hebeiArea', 'shanxiXArea', 'neimengguArea', 'liaoningArea', 'jilinArea',
-    'heilongjiangArea', 'shanghaiArea', 'jiangsuArea', 'zhejiangArea', 'anhuiArea', 'fujianArea', 'jiangxiArea',
-    'shandongArea',
+
 ]
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 # execute([
 #     "scrapy",
 #     "crawl",
-#     spider_list[-1]
+#     "BJ",
 # ])
+# spider_list[-1]
 
 # 通过commands目录中的crawlall执行所有爬虫项目
 execute([

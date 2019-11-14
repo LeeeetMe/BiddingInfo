@@ -12,8 +12,8 @@ class QingHai(BaseSpider):
     start_urls = ['http://www.qhggzyjy.gov.cn/ggzy/jyxx/001001/001001001/secondPage.html']
     website_name = '青海省公共资源交易'
     tmpl_url = 'http://www.qhggzyjy.gov.cn/inteligentsearch/rest/inteligentSearch/getFullTextData'
-    pageIndex = 0
-    categ='工程建设'
+    pageIndex = 2
+    categ = '工程建设'
 
     def __init__(self, *a, **kw):
         super(QingHai, self).__init__(*a, **kw)
@@ -21,7 +21,7 @@ class QingHai(BaseSpider):
             self.pageIndex = 1000
 
     def start_requests(self):
-        for i in range(0, self.pageIndex,10):
+        for i in range(1, self.pageIndex, 10):
             form_data = {"token": "", "pn": i, "rn": 10, "sdt": "", "edt": "", "wd": "", "inc_wd": "", "exc_wd": "",
                          "fields": "title", "cnum": "001;002;003;004;005;006;007;008;009;010",
                          "sort": "{\"showdate\":\"0\"}", "ssort": "title", "cl": 200, "terminal": "", "condition": [
@@ -42,13 +42,13 @@ class QingHai(BaseSpider):
         rs = rs['result']['records']
         for a in rs:
             item = BiddinginfospiderItem()
-            item['href'] =response.urljoin(a['linkurl'])
+            item['href'] = response.urljoin(a['linkurl'])
             item['title'] = a['title']
             item['ctime'] = a['showdate'][0:10]
             item['city'] = a['xiaquname']
 
             # yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
-            yield  item
+            yield item
 
     # def parse_item(self, response):
     #     item = response.meta['meta']
@@ -64,4 +64,3 @@ class QingHai(BaseSpider):
     #     item['attachments'] = attachments
     #     item['category'] = self.categ
     #     print(item)
-

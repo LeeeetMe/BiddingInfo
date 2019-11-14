@@ -12,7 +12,6 @@ class BaseSpider(CrawlSpider):
     name = "base_spider"
     website_name = ""
     tmpl_url = ""
-    
 
     def __init__(self, *a, **kw):
         super(BaseSpider, self).__init__(*a, **kw)

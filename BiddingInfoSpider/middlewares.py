@@ -87,6 +87,8 @@ class BiddinginfospiderDownloaderMiddleware(object):
         return s
 
     def process_request(self, request, spider):
+        if request.meta.get("close"):
+            spider.crawler.engine.close_spider(spider, "主动关闭爬虫:" + spider.name + "-" + spider.website_name)
         dynamic_flag = request.meta.get('dynamic', False)
         xpath = request.meta.get('xpath', False)
         if dynamic_flag:
@@ -128,9 +130,15 @@ class BiddinginfospiderDownloaderMiddleware(object):
 
 
 class HttpbinProxyMiddleware(object):
-
-    def process_request(self, request, spider):
-        response = requests.get("http://localhost:8000/get")
+    def get_proxy(self):
+        response = requests.get("http://192.168.1.56:8069/get")
         res = json.loads(response.text)
         if res.get("code") == 200:
-            request.meta['proxy'] = res.get("proxy")
+            return res.get("proxy")
+        else:
+            return self.get_proxy()
+
+    def process_request(self, request, spider):
+        # TODO 无法获取https高匿代理IP，导致部分爬虫无法通过代理IP爬取
+        print(request.url)
+        request.meta['proxy'] = self.get_proxy()

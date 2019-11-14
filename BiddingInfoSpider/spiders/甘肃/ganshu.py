@@ -14,7 +14,7 @@ class GanShu(BaseSpider):
     start_urls = ['http://ggzyjy.gansu.gov.cn/f/newprovince/annogoods/list']
     website_name = '甘肃省公共资源交易'
     tmpl_url = 'http://ggzyjy.gansu.gov.cn/f/newprovince/annogoods/getAnnoList'
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(GanShu, self).__init__(*a, **kw)

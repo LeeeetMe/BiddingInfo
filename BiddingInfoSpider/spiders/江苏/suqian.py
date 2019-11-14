@@ -1,7 +1,5 @@
 import json
-import scrapy
 from scrapy import FormRequest
-from urllib.parse import urljoin
 from BiddingInfoSpider.spiders.base_spider import BaseSpider
 from BiddingInfoSpider.items import BiddinginfospiderItem
 
@@ -12,7 +10,7 @@ class SuQian(BaseSpider):
     start_urls = ['http://ggzy.sqzwfw.gov.cn/jyxx/tradeInfo.html']
     website_name = '宿迁公共资源交易'
     tmpl_url = 'http://ggzy.sqzwfw.gov.cn/WebBuilder/jyxxAction.action?cmd=getList'
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(SuQian, self).__init__(*a, **kw)
@@ -20,7 +18,7 @@ class SuQian(BaseSpider):
             self.pageIndex = 100
 
     def start_requests(self):
-        for i in range(self.pageIndex):
+        for i in range(1,self.pageIndex):
             form_data = {
                 'categorynum': '001',
                 'pageIndex': str(i),

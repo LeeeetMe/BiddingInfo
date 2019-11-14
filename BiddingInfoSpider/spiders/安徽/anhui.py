@@ -9,6 +9,12 @@ class AnHui(BaseSpider):
     start_urls = ['http://ggzy.ah.gov.cn/bulletininfo.do?method=showList&fileType=1&hySort=&bulletinclass=jy&num=1']
     website_name = '安徽公共资源交易'
     tmpl_url = 'http://ggzy.ah.gov.cn/dwr/call/plaincall/bulletinInfoDWR.getPackListForDwr1.dwr'
+    endPage = 2
+
+    def __init__(self, *a, **kw):
+        super(AnHui, self).__init__(*a, **kw)
+        if not self.biddingInfo_update:
+            self.endPage = 5
 
     def parse(self, response):
         headers = {'Host': 'ggzy.ah.gov.cn',
@@ -22,7 +28,7 @@ class AnHui(BaseSpider):
                    'Connection': 'keep-alive',
                    'Referer': 'http://ggzy.ah.gov.cn/bulletininfo.do?method=showList&fileType=1&hySort=&bulletinclass=jy&num=1',
                    }
-        for i in range(1, 5):
+        for i in range(1, self.endPage):
             form_data = {
                 'callCount': '1',
                 'page': '/ bulletininfo.do?method=showList&fileType=1&hySort=&bulletinclass=jy&num=1',

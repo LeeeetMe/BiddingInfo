@@ -53,7 +53,7 @@ ROBOTSTXT_OBEY = False
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     'BiddingInfoSpider.middlewares.BiddinginfospiderDownloaderMiddleware': 543,
-    'BiddingInfoSpider.middlewares.HttpbinProxyMiddleware': 530,
+    # 'BiddingInfoSpider.middlewares.HttpbinProxyMiddleware': 530,
 }
 
 # Enable or disable extensions
@@ -91,7 +91,7 @@ ITEM_PIPELINES = {
 
 
 # 自定义配置，如果为真则执行增量爬取，为假则爬取所有列表。增量规则由spider实现
-BIDDING_INFO_UPDATE = False
+BIDDING_INFO_UPDATE = True
 
 HTTPERROR_ALLOWED_CODES = [403, 405]
 
@@ -99,13 +99,20 @@ SELENIUM_TIMEOUT = 5
 
 RANDOMIZE_DOWNLOAD_DELAY = True
 
-FEED_URI = 'export_data/%(website_name)s-%(time)s.xls'
+FEED_URI = 'export_data/%(website_name)s%(time)s.xls'
 FEED_FORMAT = 'excel'
 FEED_EXPORT_ENCODING = 'utf8'
 FEED_EXPORT_FIELDS = ["web_site", "city", "category", "industry", "code", "title", "ctime", "href"]
+
 FEED_EXPORTERS = {'excel': 'BiddingInfoSpider.excel.ExcelItemExporter'}
+
 ITEM_DICT = {'title': '标题', 'ctime': '时间', 'web_site': '网站', 'href': '网址', "category": "种类",
              "code": "编号", "city": "城市", "industry": "行业"}
 FIELDS = [ITEM_DICT[i] for i in FEED_EXPORT_FIELDS]
 
 COMMANDS_MODULE = 'BiddingInfoSpider.commands'
+
+# redis
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_SET = 'url_set'

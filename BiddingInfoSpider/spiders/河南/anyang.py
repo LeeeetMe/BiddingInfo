@@ -12,7 +12,7 @@ class AnYang(BaseSpider):
     start_urls = ['http://www.ayggzy.cn/jyxx/jsgcZbgg']
     website_name = '安阳公共资源交易'
     tmpl_url = 'http://www.ayggzy.cn/jyxx/jsgcZbgg'
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(AnYang, self).__init__(*a, **kw)

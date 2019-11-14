@@ -12,7 +12,7 @@ class WuYiShan(BaseSpider):
     start_urls = ['http://www.wysggzy.cn:81/hyweb/wysebid/wysIndex.do#']
     website_name = '武夷山公共资源交易'
     tmpl_url = 'http://www.wysggzy.cn:81/hyweb/transInfo/getTenderInfoPage.do'
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(WuYiShan, self).__init__(*a, **kw)

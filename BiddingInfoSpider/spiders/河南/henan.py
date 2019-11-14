@@ -9,12 +9,12 @@ from BiddingInfoSpider.items import BiddinginfospiderItem
 class HeNan(BaseSpider):
     name = 'henan'
     allowed_domains = ['hnsggzyfwpt.hndrc.gov.cn']
-    start_urls = ['http://hnsggzyfwpt.hndrc.gov.cn/002/tradePublic.html']
+    start_urls = [
+        'http://hnsggzyfwpt.hndrc.gov.cn/services/hl/getSelect?response=application/json&pageIndex=1&pageSize=22']
     website_name = '河南公共资源交易'
     tmpl_url = [
         'http://hnsggzyfwpt.hndrc.gov.cn/services/hl/getSelect?response=application/json&pageIndex=%s&pageSize=22&day=&sheng=x1&qu=&xian=&title=&timestart=&timeend=&categorynum=002001001&siteguid=9f5b36de-4e8f-4fd6-b3a1-a8e08b38ea38' % i
         for i in range(1, 100)]
-
 
     def __init__(self, *a, **kw):
         super(HeNan, self).__init__(*a, **kw)
@@ -23,17 +23,16 @@ class HeNan(BaseSpider):
 
     def parse(self, response):
         rs = json.loads(response.body.decode('utf8'))
-        rs=eval(rs['return'])['Table']
+        rs = eval(rs['return'])['Table']
         for a in rs:
             item = BiddinginfospiderItem()
             item['href'] = response.urljoin(a['href'])
             item['title'] = a['title']
             item['ctime'] = a['infodate']
-            item['city'] =a['infoc']
+            item['city'] = a['infoc']
 
             # yield scrapy.Request(url=item['href'], dont_filter=True, callback=self.parse_item, meta={'meta': item, })
             yield item
-
 
     def parse_item(self, response):
         item = response.meta['meta']
