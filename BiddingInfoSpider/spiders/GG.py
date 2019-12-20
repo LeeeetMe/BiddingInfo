@@ -64,7 +64,7 @@ class GG(BaseSpider):
         super(GG, self).__init__(*a, **kw)
         self.website_name = self.area
         if not self.biddingInfo_update:
-            self.currTime = "近十天"
+            self.currTime = "近一月"
 
     def start_requests(self):
         form_data = {

@@ -52,33 +52,50 @@ class Command(ScrapyCommand):
 
     def run(self, args, opts):
         spider_list = self.crawler_process.spiders.list()
-
         # 各个地区
         spider_list = [
-            # 'anhui', 'jinan', 'shandong', 'ShuoZhou', 'TaiYuan_ShiGong',
-            # 'GuangDongJianShe', 'GuangDongJiaoTong', 'GuangDongDianLi', 'GuangDongTieLu', 'GuangDongShuiLi',
-            # 'GuangDongYuanLin', 'GuangDongMinHang', 'GuangDongJunDui', 'GuangDongFeiBiXu', 'GuangDongQiTa',
+            'anhui', 'jinan', 'shandong', 'ShuoZhou', 'TaiYuan_ShiGong',
+            'GuangDongJianShe', 'GuangDongJiaoTong', 'GuangDongDianLi', 'GuangDongTieLu', 'GuangDongShuiLi',
+            'GuangDongYuanLin', 'GuangDongMinHang', 'GuangDongJunDui', 'GuangDongFeiBiXu', 'GuangDongQiTa',
+
             # 'guangzhou', 'meishan', 'shenzhen', 'JiangSu', 'suqian',
             # 'hebei', 'anyang', 'henan', 'lhjs', 'hainan',
             # 'HuBei', 'wuhan', 'YiChang_Shigong', 'YiChang_JianLi', 'YiChang_KanChaSheJi',
+
             # 'YiChang_QiTa', 'YiChang_HuoWu', 'YiChang_FuWu', 'YiChang_GongCheng', 'HuNan',
             # 'ganshu', 'BJGongCheng_KanCha', 'BJGongCheng_ShiGong', 'BJGongCheng_JianLi',
             # 'BJGongCheng_ZhuanYe', 'BJGongCheng_CaiLiao', 'BJGongCheng_TieLu', 'BJGongCheng_YuanLin',
-            # 'BJGongCheng_MinHang', 'BJGongCheng_JunDui', 'BJGongCheng_QiTa',
+            # 'BJGongCheng_MinHang', 'BJGongCheng_JunDui',
+            # #
+            # 'BJGongCheng_QiTa',
             # 'TianJin', 'LongYan_JianShe', 'nanping', 'putian', 'shaowu', 'BL',
-            # 'wuyishan', 'jingcaizh', 'qinghai','BJ',
+            # 'wuyishan', 'jingcaizh', 'qinghai', 'BJ',
             # 'shanxi0',
-        ]
-        # 全国各省
-        spider_list = [
-            # 东
-            'beijingArea', 'tianjinArea', 'hebeiArea', 'shanxiXArea', 'neimengguArea',
-            'liaoningArea', 'jilinArea', 'heilongjiangArea', 'shanghaiArea', 'jiangsuArea',
-            'zhejiangArea', 'anhuiArea', 'fujianArea', 'jiangxiArea',
-            # 西
+            # ]
+            # 全国各省
+            # spider_list = [
+            # # 东
+            # 'beijingArea', 'tianjinArea', 'hebeiArea', 'shanxiXArea', 'neimengguArea',
+            # 'liaoningArea', 'jilinArea', 'heilongjiangArea', 'shanghaiArea', 'jiangsuArea',
+            # 'zhejiangArea', 'anhuiArea', 'fujianArea', 'jiangxiArea',
+            # # 西
             # 'henanArea', 'hubeiArea', 'hunanArea', 'guangdongArea', 'guangxiArea', 'hainanArea',
             # 'chongqingArea', 'sichuanArea', 'guizhouArea', 'yunnanArea', 'xizangArea', 'shanxiArea', 'gansuArea',
             # 'qinghaiArea', 'ningxiaArea', 'xinjiangArea', 'bingtuanArea',
+            # ]
+            # 国企公司
+            # spider_list = [
+            # 'BingQiDianZi', 'ChangJiangSanXia', 'DianLiSheBei', 'HangKongGongYe', 'HuaGongZhaoBiao',
+            # 'JiaoJianWuZi', 'KaiFaTouZi', 'NanShuiBeiDiao', 'angang', 'datang',
+            # 'zhongtiewu', 'zhonghang', 'ZhongHaiYou', 'langchao', 'nanwang',
+            # 'dongfeng', 'ecp_sgcc', 'hangfa', 'huadian', 'jzny',
+            # 'nmgdl', 'zhongmei', 'tiejiansb', 'tiejianwz', 'zhaoshangju',
+            # 'wugang', 'yiqi', 'ZhongShiHua', 'YiDongDianZi',
+
+            # spider_list = [
+            # 'ShanDongSWZF', 'ShanDongSWZF', 'ShanDongBT', 'QingDao', 'JiMo',
+            # 'QingDaoKX', 'QingDaoKJDT', 'ShanDongKXJST', 'ShanDongKJZX'
+            # ]
         ]
         for name in spider_list:
             self.crawler_process.crawl(name, **opts.__dict__)

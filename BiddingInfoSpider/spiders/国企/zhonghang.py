@@ -12,7 +12,7 @@ class ZhongHang(BaseSpider):
     start_urls = ['http://bid.aited.cn/bid/index.html']
     website_name = '中航'
     tmpl_url = 'http://bid.aited.cn/front/ajax_getBidList.do'
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(ZhongHang, self).__init__(*a, **kw)

@@ -12,7 +12,7 @@ class HuaDian(BaseSpider):
     start_urls = ['https://www.chdtp.com/pages/wzglS/zbgg/zhaobiaoList.jsp']
     website_name = '华电招投标'
     tmpl_url = 'https://www.chdtp.com/webs/queryWebZbgg.action'
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(HuaDian, self).__init__(*a, **kw)

@@ -11,6 +11,7 @@ class JiaoJianWuZi(BaseSpider):
     start_urls = []
     website_name = '中国交建物资采购管理信息系统'
     tmpl_url = "http://ec.ccccltd.cn/PMS/gysmore.shtml?id=sjN7r9ttBwLI2dpg4DQpQb68XreXjaqknBMygP8dAEQ57TILyRtTnCZX1hIiXHcc1Ra16D6TzZdblRFD/JXcCd5FP7Ek60ksxl9KkyODirY="
+    endPageNum = 2
 
     def __init__(self, *a, **kw):
         super(JiaoJianWuZi, self).__init__(*a, **kw)

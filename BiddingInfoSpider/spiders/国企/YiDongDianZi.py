@@ -13,6 +13,7 @@ class YiDongDianZi(BaseSpider):
     start_urls = ['https://b2b.10086.cn/b2b/main/preIndex.html']
     website_name = '中国移动电子采购与招标投标系统'
     tmpl_url = 'https://b2b.10086.cn/b2b/main/showBiao!showZhaobiaoResult.html'
+    endPageNum = 2
     headers = {
         "Accept": "*/*",
         "Accept-Encoding": "gzip, deflate, br",

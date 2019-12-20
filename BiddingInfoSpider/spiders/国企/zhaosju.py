@@ -12,7 +12,7 @@ class ZhaoShangJu(BaseSpider):
     start_urls = ['https://dzzb.ciesco.com.cn/gg/ggList']
     website_name = '招商局招标'
     tmpl_url = 'https://dzzb.ciesco.com.cn/gg/ggList'
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(ZhaoShangJu, self).__init__(*a, **kw)

@@ -12,7 +12,7 @@ class HangFa(BaseSpider):
     start_urls = ['http://ebid.aecc-mall.com/bid/index.html']
     website_name = '中国航发'
     tmpl_url = 'http://ebid.aecc-mall.com/front/ajax_getBidList.do'
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(HangFa, self).__init__(*a, **kw)

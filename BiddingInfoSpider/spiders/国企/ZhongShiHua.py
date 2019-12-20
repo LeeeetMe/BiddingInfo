@@ -10,6 +10,7 @@ class ZhongShiHua(BaseSpider):
     start_urls = []
     website_name = '中国石化电子招标投标交易平台'
     tmpl_url = "https://bidding.sinopec.com/tpfront/(S(iiigcylrvbvxl4x3smn4yp5g))/CommonPages/searchmore.aspx?CategoryNum=004001"
+    endPageNum = 2
 
     def __init__(self, *a, **kw):
         super(ZhongShiHua, self).__init__(*a, **kw)

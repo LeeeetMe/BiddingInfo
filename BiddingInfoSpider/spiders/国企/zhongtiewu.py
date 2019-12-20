@@ -10,7 +10,7 @@ class ZhongTieWu(BaseSpider):
     start_urls = ['https://bidding.crmsc.com.cn/bulletin/']
     website_name = '中铁物'
     tmpl_url = 'https://bidding.crmsc.com.cn/bulletin/list'
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(ZhongTieWu, self).__init__(*a, **kw)

@@ -12,7 +12,7 @@ class YiQi(BaseSpider):
     start_urls = ['https://etp.fawiec.com/gg/ggList?zbLeiXing=1&xmLeiXing=&ggStartTimeEnd=']
     website_name = '中国一汽'
     tmpl_url = 'https://etp.fawiec.com/gg/ggList?zbLeiXing=1&xmLeiXing=&ggStartTimeEnd='
-    pageIndex = 1
+    pageIndex = 2
 
     def __init__(self, *a, **kw):
         super(YiQi, self).__init__(*a, **kw)
